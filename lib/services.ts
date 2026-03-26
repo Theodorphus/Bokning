@@ -29,7 +29,7 @@ export const getAllServices = unstable_cache(
       const { data } = await client.query<{
         services: { nodes: Service[] };
       }>({ query: GET_ALL_SERVICES });
-      return data.services.nodes;
+      return data?.services.nodes ?? [];
     } catch (err) {
       console.error("getAllServices failed:", err);
       return [];
@@ -46,7 +46,7 @@ export const getAllServiceSlugs = unstable_cache(
       const { data } = await client.query<{
         services: { nodes: { slug: string }[] };
       }>({ query: GET_ALL_SERVICE_SLUGS });
-      return data.services.nodes.map((n) => n.slug);
+      return data?.services.nodes.map((n) => n.slug) ?? [];
     } catch (err) {
       console.error("getAllServiceSlugs failed:", err);
       return [];
@@ -64,7 +64,7 @@ export const getServiceBySlug = unstable_cache(
         query: GET_SERVICE_BY_SLUG,
         variables: { slug },
       });
-      return data.service ?? null;
+      return data?.service ?? null;
     } catch (err) {
       console.error(`getServiceBySlug(${slug}) failed:`, err);
       return null;
