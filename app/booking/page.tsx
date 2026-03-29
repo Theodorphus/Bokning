@@ -5,26 +5,28 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import PaymentOptions from "@/components/PaymentOptions";
 import CancellationPolicy from "@/components/CancellationPolicy";
+import HowItWorks from "@/components/HowItWorks";
 import { getAllServices } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Boka massage",
   description:
-    "Boka massage direkt online. Välj behandling, tid och skicka din förfrågan.",
+    "Boka massage direkt online hos Wellness Studio i Stockholm. Välj behandling, ange önskad tid och skicka din förfrågan – enkelt och snabbt.",
+  alternates: { canonical: "https://wellness-studio.se/booking" },
   openGraph: {
     title: "Boka massage – Wellness Studio",
     description:
       "Boka massage direkt online. Välj behandling, tid och skicka din förfrågan.",
-    type: "website",
+    images: [{ url: "https://picsum.photos/seed/booking-hero/1200/630", width: 1200, height: 630 }],
   },
 };
 
-const jsonLd = {
+const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Wellness Studio",
   description: "Professionell massage i Stockholm",
-  url: "https://wellness.se",
+  url: "https://wellness-studio.se",
   telephone: "+46701234567",
   email: "kontakt@wellness.se",
   address: {
@@ -41,6 +43,45 @@ const jsonLd = {
   ],
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Hur bokar jag en tid?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Fyll i formuläret på bokningssidan med ditt namn, e-post, önskad behandling och tid. Vi återkommer med en bekräftelse inom kort.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Hur lång tid tar en behandling?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Beroende på behandling varierar det från 30 minuter upp till 90 minuter. Se respektive behandling för mer information.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vilka betalningsmetoder accepterar ni?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Vi accepterar Swish, kreditkort (Visa/Mastercard), Klarna och presentkort. Betalning sker på plats efter behandlingen.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vad gäller vid avbokning?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Avbokning är kostnadsfri upp till 24 timmar innan behandlingen. Senare avbokning debiteras 50% av behandlingspriset.",
+      },
+    },
+  ],
+};
+
 export default async function BookingPage() {
   const services = await getAllServices();
 
@@ -48,7 +89,11 @@ export default async function BookingPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div>
         <HeroBooking />
@@ -59,7 +104,8 @@ export default async function BookingPage() {
         >
           <BookingClient services={services} />
         </section>
-        <Testimonials />
+        <HowItWorks />
+        <Testimonials limit={3} />
         <PaymentOptions />
         <CancellationPolicy />
         <FAQ />

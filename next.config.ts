@@ -1,14 +1,22 @@
 import type { NextConfig } from "next";
 
 const wpUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL ?? "http://localhost";
-const { hostname, protocol } = new URL(wpUrl);
+const { hostname: wpHostname, protocol: wpProtocol } = new URL(wpUrl);
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: protocol.replace(":", "") as "http" | "https",
-        hostname,
+        protocol: wpProtocol.replace(":", "") as "http" | "https",
+        hostname: wpHostname,
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "fastly.picsum.photos",
       },
     ],
   },

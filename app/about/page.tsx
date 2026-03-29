@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import TherapistIntro from "@/components/TherapistIntro";
 import Testimonials from "@/components/Testimonials";
 import OpeningHours from "@/components/OpeningHours";
@@ -7,36 +8,57 @@ import OpeningHours from "@/components/OpeningHours";
 export const metadata: Metadata = {
   title: "Om oss",
   description:
-    "Möt Anna Lindgren – diplomerad massageterapeut med över 10 års erfarenhet. Läs om vår filosofi och våra värderingar.",
+    "Möt Anna Lindgren – diplomerad massageterapeut med över 10 års erfarenhet i Stockholm. Läs om vår filosofi och våra värderingar.",
+  alternates: { canonical: "https://wellness-studio.se/about" },
   openGraph: {
     title: "Om oss – Wellness Studio",
     description:
       "Möt Anna Lindgren – diplomerad massageterapeut med över 10 års erfarenhet.",
-    type: "website",
+    images: [{ url: "https://picsum.photos/seed/therapist-anna/1200/630", width: 1200, height: 630 }],
   },
 };
+
+const values = [
+  {
+    title: "Professionalitet",
+    text: "Certifierade terapeuter, hög hygienstandard och ett bemötande som alltid sätter dig i fokus.",
+    icon: "🏅",
+  },
+  {
+    title: "Närvaro",
+    text: "Vi är fullt närvarande i varje behandling. Telefonen är bortstängd – din tid är din.",
+    icon: "🌿",
+  },
+  {
+    title: "Respekt",
+    text: "Din kropp, dina gränser och dina önskemål styr alltid. Vi lyssnar utan att döma.",
+    icon: "💛",
+  },
+];
 
 export default function AboutPage() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-stone-100 via-rose-50 to-white py-24 sm:py-32">
-        <div
-          aria-hidden="true"
-          className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-rose-200/40 blur-3xl"
+      {/* Hero with image */}
+      <section className="relative overflow-hidden bg-slate-900 py-24 sm:py-32">
+        <Image
+          src="https://picsum.photos/seed/about-studio/1600/800"
+          alt="Wellness Studio – vår stämningsfulla miljö"
+          fill
+          className="object-cover opacity-35"
+          priority
+          sizes="100vw"
         />
-        <div
-          aria-hidden="true"
-          className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-stone-200/60 blur-2xl"
-        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900/80" />
+
         <div className="relative mx-auto max-w-5xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+          <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
             Om oss
           </p>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-800 sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Välkommen till Wellness Studio
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-200">
             Vi tror på kraften i beröring – att en timmes professionell massage
             kan förändra hur du mår, både i kropp och sinne.
           </p>
@@ -80,11 +102,7 @@ export default function AboutPage() {
       <section className="bg-stone-50 py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid gap-6 sm:grid-cols-3">
-            {[
-              { title: "Professionalitet", text: "Certifierade terapeuter, hög hygienstandard och ett bemötande som alltid sätter dig i fokus.", icon: "🏅" },
-              { title: "Närvaro", text: "Vi är fullt närvarande i varje behandling. Telefonen är bortstängd – din tid är din.", icon: "🌿" },
-              { title: "Respekt", text: "Din kropp, dina gränser och dina önskemål styr alltid. Vi lyssnar utan att döma.", icon: "💛" },
-            ].map((v) => (
+            {values.map((v) => (
               <div
                 key={v.title}
                 className="rounded-2xl bg-white p-8 text-center ring-1 ring-stone-100"

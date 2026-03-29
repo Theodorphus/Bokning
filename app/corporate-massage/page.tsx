@@ -1,22 +1,27 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import CorporateForm from "@/components/CorporateForm";
+import HowItWorks from "@/components/HowItWorks";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Företagsmassage",
   description:
-    "Investera i din personalens välmående med professionell företagsmassage. Minskar stress, ökar produktivitet och stärker teamkänslan.",
+    "Investera i personalens välmående med professionell företagsmassage i Stockholm. Minskar stress, ökar produktivitet och stärker teamkänslan. Begär offert idag.",
+  alternates: { canonical: "https://wellness-studio.se/corporate-massage" },
   openGraph: {
     title: "Företagsmassage – Wellness Studio",
     description:
       "Professionell företagsmassage som minskar stress och ökar välmående på arbetsplatsen.",
-    type: "website",
+    images: [{ url: "https://picsum.photos/seed/corporate-office/1200/630", width: 1200, height: 630 }],
   },
 };
 
 const benefits = [
   { icon: "📉", title: "Minskad stress", text: "Studier visar att regelbunden massage minskar kortisolnivåerna märkbart – och ger ett lugnare, mer fokuserat team." },
   { icon: "⚡", title: "Ökad produktivitet", text: "Välmående medarbetare presterar bättre. En behandling på 20–30 min under arbetstid ger energi för resten av dagen." },
-  { icon: "🤝", title: "Stärkt teamkänsla", text: "Att ge personalen en gemensam upplevelse skapar välmående och stärker kulturen. Ett uppskattad förmån." },
+  { icon: "🤝", title: "Stärkt teamkänsla", text: "Att ge personalen en gemensam upplevelse skapar välmående och stärker kulturen. En uppskattad förmån." },
   { icon: "🏥", title: "Färre sjukdagar", text: "Förebyggande kroppsvård minskar muskelspänningar och relaterade besvär – och kan bidra till lägre sjukfrånvaro." },
   { icon: "🌟", title: "Attraktiv förmån", text: "Massage som personalförmån ökar trivsel och lojalitet. Perfekt att erbjuda som del av er employer branding." },
   { icon: "📅", title: "Flexibel bokning", text: "Vi anpassar oss efter er kalender – på er arbetsplats eller i vår studio. Heldag, halvdag eller löpande bokningar." },
@@ -46,11 +51,35 @@ const packages = [
   },
 ];
 
-const jsonLd = {
+const socialProof = [
+  {
+    company: "TechBolaget AB",
+    quote: "Vi har haft Wellness Studio hos oss en fredag i månaden i ett år nu. Personalen älskar det och sjukfrånvaron har minskat markant.",
+    name: "Sara Eriksson",
+    role: "HR-chef",
+    initials: "SE",
+  },
+  {
+    company: "Nordisk Konsult",
+    quote: "Perfekt för att visa personalen uppskattning. Smidigt upplägg, professionellt genomfört och alltid positiv feedback från teamet.",
+    name: "Marcus Holm",
+    role: "VD",
+    initials: "MH",
+  },
+  {
+    company: "Kreativa Byrån",
+    quote: "Bästa personalförmånen vi erbjuder. Snabbt och enkelt att boka, och terapeuten är fantastisk. Varmt rekommenderat!",
+    name: "Lena Johansson",
+    role: "Office Manager",
+    initials: "LJ",
+  },
+];
+
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Företagsmassage",
-  provider: { "@type": "LocalBusiness", name: "Wellness Studio" },
+  provider: { "@type": "LocalBusiness", name: "Wellness Studio", url: "https://wellness-studio.se" },
   description: "Professionell massage för företag och personalvård i Stockholm.",
   areaServed: "Stockholm",
 };
@@ -60,27 +89,30 @@ export default function CorporateMassagePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+
       <div>
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 py-24 sm:py-32">
-          <div
-            aria-hidden="true"
-            className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-rose-400/10 blur-3xl"
+        {/* Hero with image */}
+        <section className="relative overflow-hidden bg-slate-900 py-24 sm:py-36">
+          <Image
+            src="https://picsum.photos/seed/corporate-office/1600/900"
+            alt="Företagsmassage – välmående på arbetsplatsen"
+            fill
+            className="object-cover opacity-30"
+            priority
+            sizes="100vw"
           />
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-rose-300/10 blur-2xl"
-          />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
+
           <div className="relative mx-auto max-w-5xl px-6 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-400">
+            <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
               Företagsmassage
             </p>
-            <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Investera i ditt teams välmående
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200">
               Professionell massage för din personalgrupp – på plats hos er eller
               i vår studio. Minskar stress, ökar fokus och stärker teamkänslan.
             </p>
@@ -93,10 +125,17 @@ export default function CorporateMassagePage() {
               </a>
               <a
                 href="#packages"
-                className="rounded-full border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
+                className="rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
               >
                 Se paket
               </a>
+            </div>
+
+            {/* Trust badges */}
+            <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
+              <span className="flex items-center gap-2"><span className="text-rose-400">✓</span> 50+ nöjda företagskunder</span>
+              <span className="flex items-center gap-2"><span className="text-rose-400">✓</span> Svarar inom 1 arbetsdag</span>
+              <span className="flex items-center gap-2"><span className="text-rose-400">✓</span> Faktura till företaget</span>
             </div>
           </div>
         </section>
@@ -104,27 +143,17 @@ export default function CorporateMassagePage() {
         {/* Benefits */}
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
-            <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
-                Fördelar
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-800">
-                Varför välja företagsmassage?
-              </h2>
-            </div>
+            <SectionHeader
+              eyebrow="Fördelar"
+              title="Varför välja företagsmassage?"
+              body="Investering i personalens välmående är investering i er verksamhet."
+            />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {benefits.map((b) => (
-                <div
-                  key={b.title}
-                  className="rounded-2xl bg-stone-50 p-7 ring-1 ring-stone-100"
-                >
+                <div key={b.title} className="rounded-2xl bg-stone-50 p-7 ring-1 ring-stone-100">
                   <span className="text-3xl">{b.icon}</span>
-                  <h3 className="mt-4 font-semibold text-slate-800">
-                    {b.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">
-                    {b.text}
-                  </p>
+                  <h3 className="mt-4 font-semibold text-slate-800">{b.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{b.text}</p>
                 </div>
               ))}
             </div>
@@ -134,55 +163,37 @@ export default function CorporateMassagePage() {
         {/* Packages */}
         <section id="packages" className="bg-stone-50 py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-800">
-                Paket &amp; priser
-              </h2>
-              <p className="mt-3 text-slate-600">
-                Alla priser är exkl. moms. Kontakta oss för en skräddarsydd
-                offert.
-              </p>
-            </div>
-
+            <SectionHeader
+              title="Paket & priser"
+              body="Alla priser är exkl. moms. Kontakta oss för en skräddarsydd offert."
+            />
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {packages.map((p) => (
                 <div
                   key={p.name}
                   className={[
-                    "relative flex flex-col rounded-2xl p-8",
+                    "relative flex flex-col rounded-2xl p-8 transition-shadow hover:shadow-lg",
                     p.highlight
                       ? "bg-rose-600 text-white shadow-xl"
                       : "bg-white ring-1 ring-stone-200",
                   ].join(" ")}
                 >
                   {p.highlight && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-4 py-1 text-xs font-semibold text-rose-600">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-4 py-1 text-xs font-semibold text-rose-600 shadow-sm">
                       Populärast
                     </span>
                   )}
-                  <h3
-                    className={`text-xl font-bold ${p.highlight ? "text-white" : "text-slate-800"}`}
-                  >
+                  <h3 className={`text-xl font-bold ${p.highlight ? "text-white" : "text-slate-800"}`}>
                     {p.name}
                   </h3>
-                  <p
-                    className={`mt-1 text-sm ${p.highlight ? "text-rose-100" : "text-slate-500"}`}
-                  >
+                  <p className={`mt-1 text-sm ${p.highlight ? "text-rose-100" : "text-slate-500"}`}>
                     {p.sessions} · {p.duration}
                   </p>
                   <ul className="mt-6 flex-1 space-y-3">
                     {p.includes.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm">
-                        <span
-                          className={`mt-0.5 flex-shrink-0 ${p.highlight ? "text-rose-200" : "text-rose-500"}`}
-                        >
-                          ✓
-                        </span>
-                        <span
-                          className={p.highlight ? "text-rose-50" : "text-slate-600"}
-                        >
-                          {item}
-                        </span>
+                        <span className={`mt-0.5 flex-shrink-0 ${p.highlight ? "text-rose-200" : "text-rose-500"}`}>✓</span>
+                        <span className={p.highlight ? "text-rose-50" : "text-slate-600"}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -203,132 +214,56 @@ export default function CorporateMassagePage() {
           </div>
         </section>
 
+        {/* Social proof */}
+        <section className="bg-white py-20 sm:py-24">
+          <div className="mx-auto max-w-5xl px-6">
+            <SectionHeader
+              eyebrow="Vad företagen säger"
+              title="Uppskattad av över 50 företag"
+            />
+            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+              {socialProof.map((t) => (
+                <div key={t.name} className="flex flex-col rounded-2xl bg-stone-50 p-7 ring-1 ring-stone-100">
+                  <div className="flex items-center gap-0.5 mb-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} className="h-4 w-4 fill-rose-400" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <blockquote className="flex-1 text-sm leading-7 text-slate-600">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                  <div className="mt-5 flex items-center gap-3 border-t border-stone-100 pt-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-rose-100 text-xs font-bold text-rose-700">
+                      {t.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800">{t.name}</p>
+                      <p className="text-xs text-slate-500">{t.role}, {t.company}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it works for corporate */}
+        <HowItWorks variant="corporate" />
+
         {/* Contact form */}
-        <section id="contact" className="bg-white py-20 sm:py-24">
+        <section id="contact" className="bg-stone-50 py-20 sm:py-24">
           <div className="mx-auto max-w-2xl px-6">
             <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-800">
-                Begär en offert
-              </h2>
-              <p className="mt-3 text-slate-600">
-                Fyll i formuläret så återkommer vi inom en arbetsdag.
-              </p>
+              <SectionHeader
+                eyebrow="Offertförfrågan"
+                title="Begär en offert"
+                body="Fyll i formuläret så återkommer vi inom en arbetsdag med ett skräddarsytt förslag."
+              />
             </div>
-
-            <div className="mt-10 rounded-2xl bg-stone-50 px-8 py-10 ring-1 ring-stone-100">
-              <form
-                action="mailto:kontakt@wellness.se"
-                method="POST"
-                encType="text/plain"
-                className="space-y-5"
-              >
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="corp-name"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      Namn <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="corp-name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Ditt namn"
-                      className="w-full rounded-lg px-4 py-3 text-sm ring-1 ring-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="corp-company"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      Företag <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="corp-company"
-                      name="company"
-                      type="text"
-                      required
-                      placeholder="Företagsnamn"
-                      className="w-full rounded-lg px-4 py-3 text-sm ring-1 ring-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="corp-email"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      E-post <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="corp-email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="din@foretag.se"
-                      className="w-full rounded-lg px-4 py-3 text-sm ring-1 ring-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="corp-employees"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      Antal anställda
-                    </label>
-                    <select
-                      id="corp-employees"
-                      name="employees"
-                      className="w-full rounded-lg px-4 py-3 text-sm ring-1 ring-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
-                    >
-                      <option value="">Välj...</option>
-                      <option value="1-5">1–5</option>
-                      <option value="6-15">6–15</option>
-                      <option value="16-30">16–30</option>
-                      <option value="30+">30+</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="corp-message"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
-                  >
-                    Berätta mer om vad ni söker
-                  </label>
-                  <textarea
-                    id="corp-message"
-                    name="message"
-                    rows={4}
-                    placeholder="Vilken typ av massage, ungefär när, hur ofta..."
-                    className="w-full rounded-lg px-4 py-3 text-sm ring-1 ring-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
-                  />
-                </div>
-
-                <p className="text-xs text-slate-500">
-                  * Formuläret öppnar din e-postklient. Alternativt:{" "}
-                  <a
-                    href="tel:+46701234567"
-                    className="text-rose-600 hover:underline"
-                  >
-                    ring oss direkt
-                  </a>
-                  .
-                </p>
-
-                <button
-                  type="submit"
-                  className="w-full rounded-xl bg-rose-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 sm:w-auto"
-                >
-                  Skicka offertförfrågan
-                </button>
-              </form>
+            <div className="mt-10">
+              <CorporateForm />
             </div>
           </div>
         </section>
@@ -336,12 +271,9 @@ export default function CorporateMassagePage() {
         {/* CTA */}
         <section className="bg-gradient-to-br from-rose-50 to-stone-50 py-16">
           <div className="mx-auto max-w-xl px-6 text-center">
-            <h2 className="text-2xl font-bold text-slate-800">
-              Frågor? Ring oss direkt.
-            </h2>
+            <h2 className="text-2xl font-bold text-slate-800">Frågor? Ring oss direkt.</h2>
             <p className="mt-3 text-slate-600">
-              Vi svarar snabbt och hjälper dig hitta det bästa upplägget för ert
-              företag.
+              Vi svarar snabbt och hjälper dig hitta det bästa upplägget för ert företag.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a

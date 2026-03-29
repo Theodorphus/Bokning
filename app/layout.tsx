@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,10 +12,17 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | WP Starter",
-    default: "WP Starter",
+    template: "%s | Wellness Studio",
+    default: "Wellness Studio – Professionell massage i Stockholm",
   },
-  description: "Headless WordPress + Next.js starter template",
+  description:
+    "Professionell massage i hjärtat av Stockholm. Boka avslappningsmassage, djupvävnadsmassage, sportmassage och mer. Enkel bokning online.",
+  metadataBase: new URL("https://wellness-studio.se"),
+  openGraph: {
+    siteName: "Wellness Studio",
+    locale: "sv_SE",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +36,7 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <StickyCTA />
       </body>
     </html>
   );

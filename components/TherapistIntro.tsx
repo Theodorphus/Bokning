@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const certifications = [
   "Diplomerad massageterapeut, Skandinaviska Massageskolan",
   "Certifierad i djupvävnadsmassage (ITEC)",
@@ -7,26 +9,29 @@ const certifications = [
 ];
 
 const specializations = [
-  { label: "Avslappningsmassage", icon: "✦" },
-  { label: "Djupvävnadsmassage", icon: "✦" },
-  { label: "Gravidmassage", icon: "✦" },
-  { label: "Sportmassage", icon: "✦" },
-  { label: "Trigger point-terapi", icon: "✦" },
-  { label: "Företagsmassage", icon: "✦" },
+  "Avslappningsmassage",
+  "Djupvävnadsmassage",
+  "Gravidmassage",
+  "Sportmassage",
+  "Trigger point-terapi",
+  "Företagsmassage",
 ];
 
 const whyChooseMe = [
   {
     title: "Skräddarsydd behandling",
     text: "Varje behandling anpassas helt efter dina behov och önskemål – inga standardlösningar.",
+    icon: "🎯",
   },
   {
     title: "Trygg miljö",
     text: "Diskret, ren och lugn lokal. Du ska känna dig helt bekväm från första stund.",
+    icon: "🌿",
   },
   {
     title: "Lång erfarenhet",
     text: "Över 10 år och tusentals behandlingar ger mig förmågan att snabbt förstå vad din kropp behöver.",
+    icon: "⭐",
   },
 ];
 
@@ -46,24 +51,21 @@ export default function TherapistIntro() {
 
         {/* Main intro row */}
         <div className="mt-14 flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16">
-          {/* Avatar */}
+          {/* Portrait */}
           <div className="flex-shrink-0">
             <div className="relative">
-              <div className="h-56 w-56 overflow-hidden rounded-full bg-gradient-to-br from-rose-100 to-stone-200 ring-4 ring-white shadow-xl">
-                {/* Placeholder silhouette */}
-                <svg
-                  viewBox="0 0 200 200"
-                  className="h-full w-full"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="100" cy="75" r="38" fill="#e7c5bf" />
-                  <ellipse cx="100" cy="170" rx="60" ry="45" fill="#e7c5bf" />
-                </svg>
+              <div className="h-64 w-64 overflow-hidden rounded-2xl shadow-xl ring-4 ring-white">
+                <Image
+                  src="https://picsum.photos/seed/therapist-anna/400/400"
+                  alt="Anna Lindgren, massageterapeut"
+                  width={400}
+                  height={400}
+                  className="h-full w-full object-cover"
+                  priority
+                />
               </div>
-              {/* Badge */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-rose-600 px-4 py-1 text-xs font-semibold text-white shadow">
-                10+ år erfarenhet
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-rose-600 px-5 py-1.5 text-xs font-semibold text-white shadow-lg">
+                10+ års erfarenhet
               </div>
             </div>
           </div>
@@ -104,24 +106,24 @@ export default function TherapistIntro() {
         </div>
 
         {/* Specializations */}
-        <div className="mt-16">
+        <div className="mt-16 border-t border-stone-100 pt-12">
           <h3 className="text-center text-xl font-bold text-slate-800">
             Specialiseringar
           </h3>
           <ul className="mt-6 flex flex-wrap justify-center gap-3">
             {specializations.map((s) => (
               <li
-                key={s.label}
+                key={s}
                 className="rounded-full border border-rose-200 bg-rose-50 px-5 py-2 text-sm font-medium text-rose-700"
               >
-                {s.icon} {s.label}
+                ✦ {s}
               </li>
             ))}
           </ul>
         </div>
 
         {/* Why choose me */}
-        <div className="mt-16">
+        <div className="mt-12">
           <h3 className="text-center text-xl font-bold text-slate-800">
             Varför välja mig?
           </h3>
@@ -131,7 +133,8 @@ export default function TherapistIntro() {
                 key={item.title}
                 className="rounded-2xl bg-stone-50 p-7 text-center ring-1 ring-stone-100"
               >
-                <h4 className="font-semibold text-slate-800">{item.title}</h4>
+                <span className="text-3xl">{item.icon}</span>
+                <h4 className="mt-4 font-semibold text-slate-800">{item.title}</h4>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
                   {item.text}
                 </p>
