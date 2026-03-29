@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Service } from "@/lib/services";
 
 interface BookingFormProps {
@@ -8,7 +9,7 @@ interface BookingFormProps {
   selectedService: string;
 }
 
-type FormStatus = "idle" | "loading" | "success" | "error";
+type FormStatus = "idle" | "loading" | "error";
 
 const inputClasses =
   "w-full rounded-lg px-4 py-3 text-sm text-slate-800 ring-1 ring-stone-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400 transition-shadow bg-white disabled:bg-stone-50 disabled:text-slate-400";
@@ -19,6 +20,7 @@ export default function BookingForm({
   services,
   selectedService,
 }: BookingFormProps) {
+  const router = useRouter();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [serviceValue, setServiceValue] = useState(selectedService);
@@ -26,36 +28,6 @@ export default function BookingForm({
   useEffect(() => {
     setServiceValue(selectedService);
   }, [selectedService]);
-
-  if (status === "success") {
-    return (
-      <div className="flex flex-col items-center gap-5 py-16 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-rose-50">
-          <svg
-            className="h-8 w-8 text-rose-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
-        <h3 className="text-xl font-semibold text-slate-800">Tack!</h3>
-        <p className="text-slate-600">Vi återkommer inom kort.</p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="mt-2 text-sm text-rose-600 underline-offset-2 hover:underline"
-        >
-          Skicka en ny förfrågan
-        </button>
-      </div>
-    );
-  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -90,7 +62,7 @@ export default function BookingForm({
         );
       }
 
-      setStatus("success");
+      router.push("/booking/tack");
     } catch (err) {
       setStatus("error");
       setErrorMessage(

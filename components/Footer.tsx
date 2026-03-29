@@ -126,8 +126,17 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 border-t border-white/10 pt-8 text-center text-xs text-stone-500">
-          © {new Date().getFullYear()} Wellness Studio. Alla rättigheter
-          förbehållna.
+          <p>
+            © {new Date().getFullYear()} Wellness Studio. Alla rättigheter förbehållna.
+          </p>
+          <div className="mt-2 flex justify-center gap-4">
+            <Link href="/integritetspolicy" className="hover:text-stone-300 transition-colors">
+              Integritetspolicy
+            </Link>
+            <Link href="/villkor" className="hover:text-stone-300 transition-colors">
+              Bokningsvillkor
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

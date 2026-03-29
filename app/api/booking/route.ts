@@ -40,7 +40,7 @@ export async function POST(request: Request) {
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  const emailText = [
+  const staffEmailText = [
     `Namn: ${name}`,
     `E-post: ${email}`,
     phone ? `Telefon: ${phone}` : null,
@@ -51,19 +51,53 @@ export async function POST(request: Request) {
     .filter(Boolean)
     .join("\n");
 
-  const { error } = await resend.emails.send({
-    from: "Boka massage <noreply@konstbyte.se>",
-    to: process.env.BOOKING_EMAIL!,
-    subject: `Ny bokningsförfrågan från ${name}`,
-    text: emailText,
-  });
+  const confirmationRows = [
+    service ? `Behandling: ${service}` : null,
+    datetime ? `Önskad tid: ${datetime}` : null,
+    phone ? `Telefon: ${phone}` : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
 
-  if (error) {
-    console.error("Resend error:", error);
+  const customerEmailText = `Hej ${name}!
+
+Tack för din bokningsförfrågan. Vi har mottagit den och återkommer med bekräftelse inom kort.
+
+${confirmationRows ? `Dina uppgifter:\n${confirmationRows}\n\n` : ""}Behöver du ändra eller avboka? Kontakta oss på:
+Telefon: 070-123 45 67
+E-post: kontakt@wellness.se
+
+Vi ser fram emot att välkomna dig!
+
+Varma hälsningar,
+Wellness Studio
+Storgatan 12, 111 22 Stockholm`;
+
+  const [staffResult, customerResult] = await Promise.all([
+    resend.emails.send({
+      from: "Boka massage <noreply@konstbyte.se>",
+      to: process.env.BOOKING_EMAIL!,
+      subject: `Ny bokningsförfrågan från ${name}`,
+      text: staffEmailText,
+    }),
+    resend.emails.send({
+      from: "Wellness Studio <noreply@konstbyte.se>",
+      to: email,
+      subject: "Vi har mottagit din bokningsförfrågan",
+      text: customerEmailText,
+    }),
+  ]);
+
+  if (staffResult.error) {
+    console.error("Resend error (staff):", staffResult.error);
     return NextResponse.json(
       { message: "Kunde inte skicka e-post. Försök igen senare." },
       { status: 500 }
     );
+  }
+
+  if (customerResult.error) {
+    console.error("Resend error (customer confirmation):", customerResult.error);
   }
 
   return NextResponse.json({ success: true });
