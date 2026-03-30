@@ -13,17 +13,26 @@ export const metadata: Metadata = {
     title: "Behandlingar – Wellness Studio",
     description:
       "Professionell massage i Stockholm. Välj bland flera skräddarsydda behandlingar.",
-    images: [{ url: "https://picsum.photos/seed/services-hero/1200/630", width: 1200, height: 630 }],
+    images: [{ url: "/images/bakgrund1.png", width: 1200, height: 630 }],
   },
 };
 
+const slugToLocalImage: Record<string, string> = {
+  avslappningsmassage: "/images/avslappning.png",
+  djupvavnadsmassage: "/images/djupvavnad.png",
+  sportmassage: "/images/sport.png",
+  gravidmassage: "/images/gravid.png",
+  "hot-stone-massage": "/images/studio.png",
+  triggerpoint: "/images/triggerpoint.png",
+};
+
 const fallbackServices = [
-  { slug: "#", title: "Avslappningsmassage", shortDescription: "Helkroppsmassage med mjuka, lugna rörelser som löser upp spänningar och sänker stressnivån. Perfekt för återhämtning.", price: "från 695 kr", seed: "relaxation-massage" },
-  { slug: "#", title: "Djupvävnadsmassage", shortDescription: "Intensivare massage som arbetar djupare i musklerna för att lösa upp kroniska spänningar och smärta.", price: "från 795 kr", seed: "deep-tissue" },
-  { slug: "#", title: "Sportmassage", shortDescription: "Anpassad för aktiva och idrottare. Förbättrar återhämtning, rörlighet och förebygger skador.", price: "från 795 kr", seed: "sports-massage" },
-  { slug: "#", title: "Gravidmassage", shortDescription: "Skonsam massage anpassad för gravida. Minskar ryggvärk, svullnad och ger välbehövlig avkoppling.", price: "från 795 kr", seed: "pregnancy" },
-  { slug: "#", title: "Hot stone massage", shortDescription: "Varma vulkanstenar kombineras med klassisk massage för djup avkoppling och ökad cirkulation.", price: "från 895 kr", seed: "hot-stone" },
-  { slug: "#", title: "Trigger point-terapi", shortDescription: "Riktad behandling av ömma punkter i musklerna. Effektiv mot kronisk smärta och spänningshuvudvärk.", price: "från 895 kr", seed: "trigger-point" },
+  { slug: "#", title: "Avslappningsmassage", shortDescription: "Helkroppsmassage med mjuka, lugna rörelser som löser upp spänningar och sänker stressnivån. Perfekt för återhämtning.", price: "från 695 kr", image: "/images/avslappning.png" },
+  { slug: "#", title: "Djupvävnadsmassage", shortDescription: "Intensivare massage som arbetar djupare i musklerna för att lösa upp kroniska spänningar och smärta.", price: "från 795 kr", image: "/images/djupvavnad.png" },
+  { slug: "#", title: "Sportmassage", shortDescription: "Anpassad för aktiva och idrottare. Förbättrar återhämtning, rörlighet och förebygger skador.", price: "från 795 kr", image: "/images/sport.png" },
+  { slug: "#", title: "Gravidmassage", shortDescription: "Skonsam massage anpassad för gravida. Minskar ryggvärk, svullnad och ger välbehövlig avkoppling.", price: "från 795 kr", image: "/images/gravid.png" },
+  { slug: "#", title: "Hot stone massage", shortDescription: "Varma vulkanstenar kombineras med klassisk massage för djup avkoppling och ökad cirkulation.", price: "från 895 kr", image: "/images/studio.png" },
+  { slug: "#", title: "Trigger point-terapi", shortDescription: "Riktad behandling av ömma punkter i musklerna. Effektiv mot kronisk smärta och spänningshuvudvärk.", price: "från 895 kr", image: "/images/triggerpoint.png" },
 ];
 
 export default async function ServicesPage() {
@@ -35,7 +44,7 @@ export default async function ServicesPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 py-20 sm:py-28">
         <Image
-          src="https://picsum.photos/seed/services-hero/1600/700"
+          src="/images/bakgrund1.png"
           alt="Massage behandlingar hos Wellness Studio"
           fill
           className="object-cover opacity-35"
@@ -84,7 +93,7 @@ export default async function ServicesPage() {
                         <Image
                           src={
                             service.serviceFields.image?.sourceUrl ||
-                            `https://picsum.photos/seed/${service.slug}/600/400`
+                            slugToLocalImage[service.slug] ?? "/images/bakgrund2.png"
                           }
                           alt={service.title}
                           fill
@@ -122,7 +131,7 @@ export default async function ServicesPage() {
                     <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100">
                       <div className="relative aspect-video overflow-hidden bg-stone-100">
                         <Image
-                          src={`https://picsum.photos/seed/${service.seed}/600/400`}
+                          src={service.image}
                           alt={service.title}
                           fill
                           className="object-cover"

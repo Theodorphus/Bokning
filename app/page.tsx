@@ -1,10 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getAllServices } from "@/lib/services";
-import HowItWorks from "@/components/HowItWorks";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import CorporateMassageSection from "@/components/CorporateMassageSection";
+import GiftCardSection from "@/components/GiftCardSection";
 import StudioSection from "@/components/StudioSection";
-import Testimonials from "@/components/Testimonials";
+import AboutMeSection from "@/components/AboutMeSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import InstagramSection from "@/components/InstagramSection";
+import HowItWorks from "@/components/HowItWorks";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export const metadata: Metadata = {
@@ -16,7 +20,7 @@ export const metadata: Metadata = {
     title: "Wellness Studio – Professionell massage i Stockholm",
     description:
       "Boka professionell massage i Stockholm. Skräddarsydda behandlingar av certifierad terapeut.",
-    images: [{ url: "https://picsum.photos/seed/spa-hero/1200/630", width: 1200, height: 630 }],
+    images: [{ url: "/images/hero.png", width: 1200, height: 630 }],
   },
 };
 
@@ -29,7 +33,7 @@ const localBusinessSchema = {
   url: "https://wellness-studio.se",
   telephone: "+46701234567",
   email: "kontakt@wellness.se",
-  image: "https://picsum.photos/seed/spa-hero/1200/630",
+  image: "https://wellness-studio.se/images/hero.png",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Storgatan 12",
@@ -88,10 +92,7 @@ const usps = [
   },
 ];
 
-export default async function HomePage() {
-  const services = await getAllServices();
-  const featuredServices = services.slice(0, 3);
-
+export default function HomePage() {
   return (
     <>
       <script
@@ -100,56 +101,10 @@ export default async function HomePage() {
       />
 
       <div>
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-slate-900 py-24 sm:py-36">
-          {/* Background image */}
-          <Image
-            src="https://picsum.photos/seed/massage-hero/1600/900"
-            alt="Avkopplande massage i Wellness Studio"
-            fill
-            className="object-cover opacity-40"
-            priority
-            sizes="100vw"
-          />
-          {/* Gradient overlay */}
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
+        {/* 1. Hero */}
+        <HeroSection />
 
-          <div className="relative mx-auto max-w-5xl px-6 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
-              Välkommen till Wellness Studio
-            </p>
-            <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Hitta din balans.<br className="hidden sm:block" /> Känn skillnaden.
-            </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200">
-              Professionell massage i hjärtat av Stockholm. Vi anpassar varje behandling
-              efter just dina behov – oavsett om du söker avkoppling eller smärtlindring.
-            </p>
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Link
-                href="/booking"
-                className="rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 focus:ring-offset-slate-900"
-              >
-                Boka din tid
-              </Link>
-              <Link
-                href="/services"
-                className="rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
-              >
-                Se alla behandlingar
-              </Link>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div aria-hidden="true" className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/40">
-            <svg className="h-5 w-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </section>
-
-        {/* USP */}
+        {/* 2. USP */}
         <section className="bg-white py-20 sm:py-28">
           <div className="mx-auto max-w-5xl px-6">
             <SectionHeader eyebrow="Varför välja oss" title="Omsorg i varje detalj" />
@@ -167,110 +122,31 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Featured services */}
-        <section className="bg-stone-50 py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeader eyebrow="Behandlingar" title="Populära behandlingar" center={false} />
-              <Link href="/services" className="flex-shrink-0 text-sm font-semibold text-rose-600 hover:text-rose-500">
-                Se alla behandlingar →
-              </Link>
-            </div>
+        {/* 3. Services */}
+        <ServicesSection />
 
-            {featuredServices.length > 0 ? (
-              <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {featuredServices.map((service) => (
-                  <li key={service.slug}>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 transition-shadow hover:shadow-md"
-                    >
-                      <div className="relative aspect-video overflow-hidden bg-stone-100">
-                        <Image
-                          src={
-                            service.serviceFields.image?.sourceUrl ||
-                            `https://picsum.photos/seed/${service.slug}/600/400`
-                          }
-                          alt={service.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      </div>
-                      <div className="flex flex-1 flex-col p-6">
-                        <h3 className="font-semibold text-slate-800 transition-colors group-hover:text-rose-600">
-                          {service.title}
-                        </h3>
-                        {service.serviceFields.shortDescription && (
-                          <p className="mt-2 flex-1 text-sm leading-7 text-slate-600 line-clamp-3">
-                            {service.serviceFields.shortDescription}
-                          </p>
-                        )}
-                        <div className="mt-5 flex items-center justify-between">
-                          {service.serviceFields.price && (
-                            <span className="text-sm font-semibold text-rose-600">
-                              {service.serviceFields.price}
-                            </span>
-                          )}
-                          <span className="text-xs font-medium text-slate-400 group-hover:text-rose-500 transition-colors">
-                            Läs mer →
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {[
-                  { name: "Avslappningsmassage", seed: "relaxation", desc: "Helkroppsmassage med mjuka rörelser för djup avkoppling och stressreduktion." },
-                  { name: "Djupvävnadsmassage", seed: "deep-tissue", desc: "Intensivare massage som når djupare muskelvävnader och löser upp kroniska spänningar." },
-                  { name: "Sportmassage", seed: "sports", desc: "Anpassad massage för aktiva – förbättrar återhämtning och förebygger skador." },
-                ].map((s) => (
-                  <li key={s.name}>
-                    <Link
-                      href="/services"
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 transition-shadow hover:shadow-md"
-                    >
-                      <div className="relative aspect-video overflow-hidden bg-stone-100">
-                        <Image
-                          src={`https://picsum.photos/seed/${s.seed}/600/400`}
-                          alt={s.name}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, 33vw"
-                        />
-                      </div>
-                      <div className="flex flex-1 flex-col p-6">
-                        <h3 className="font-semibold text-slate-800 transition-colors group-hover:text-rose-600">{s.name}</h3>
-                        <p className="mt-2 flex-1 text-sm leading-7 text-slate-600">{s.desc}</p>
-                        <span className="mt-5 text-xs font-medium text-slate-400 group-hover:text-rose-500 transition-colors">
-                          Läs mer →
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            <div className="mt-10 text-center">
-              <Link
-                href="/booking"
-                className="inline-block rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
-              >
-                Boka en behandling
-              </Link>
-            </div>
-          </div>
-        </section>
-
+        {/* 4. How it works */}
         <HowItWorks />
-        <StudioSection />
-        <Testimonials limit={3} bg="white" />
 
-        {/* CTA banner */}
+        {/* 5. Studio */}
+        <StudioSection />
+
+        {/* 6. About therapist */}
+        <AboutMeSection />
+
+        {/* 7. Testimonials */}
+        <TestimonialsSection />
+
+        {/* 8. Corporate */}
+        <CorporateMassageSection />
+
+        {/* 9. Gift cards */}
+        <GiftCardSection />
+
+        {/* 10. Instagram */}
+        <InstagramSection />
+
+        {/* 11. Final CTA */}
         <section className="relative overflow-hidden bg-gradient-to-r from-rose-600 to-rose-500 py-20">
           <div aria-hidden="true" className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
           <div aria-hidden="true" className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
