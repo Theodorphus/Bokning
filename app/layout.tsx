@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-slate-50 text-slate-900">
+      <body className="flex min-h-full flex-col bg-choc-50 text-choc-900">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

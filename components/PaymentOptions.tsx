@@ -65,9 +65,9 @@ const methods = [
   {
     name: "Presentkort",
     description: "Lös in ett presentkort vid besöket.",
-    bg: "bg-rose-50",
-    border: "border-rose-200",
-    label: "bg-rose-600",
+    bg: "bg-wood-50",
+    border: "border-wood-200",
+    label: "bg-wood-600",
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -90,13 +90,13 @@ const methods = [
 
 export default function PaymentOptions() {
   return (
-    <section className="bg-stone-50 py-16 sm:py-20">
+    <section className="bg-sand-50 py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+          <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
             Betalning
           </p>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-choc-800 sm:text-3xl">
             Vi accepterar
           </h2>
         </div>
@@ -108,13 +108,13 @@ export default function PaymentOptions() {
               className={`flex flex-col items-center gap-3 rounded-2xl border ${m.border} ${m.bg} p-6 text-center`}
             >
               {m.icon}
-              <p className="font-semibold text-slate-800">{m.name}</p>
-              <p className="text-xs leading-5 text-slate-600">{m.description}</p>
+              <p className="font-semibold text-choc-800">{m.name}</p>
+              <p className="text-xs leading-5 text-choc-600">{m.description}</p>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 text-center text-sm text-slate-500">
+        <p className="mt-8 text-center text-sm text-choc-500">
           Betalning sker alltid i samband med behandlingen. Faktura tillgängligt
           för företagskunder.
         </p>

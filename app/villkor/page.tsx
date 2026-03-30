@@ -8,15 +8,15 @@ export const metadata: Metadata = {
 export default function VillkorPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 sm:py-24">
-      <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">Juridisk information</p>
-      <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
+      <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">Juridisk information</p>
+      <h1 className="mt-3 text-3xl font-bold tracking-tight text-choc-800 sm:text-4xl">
         Boknings- och avbokningsvillkor
       </h1>
-      <p className="mt-4 text-sm text-slate-500">Senast uppdaterad: mars 2025</p>
+      <p className="mt-4 text-sm text-choc-500">Senast uppdaterad: mars 2025</p>
 
-      <div className="mt-10 space-y-10 text-sm leading-7 text-slate-600">
+      <div className="mt-10 space-y-10 text-sm leading-7 text-choc-600">
         <section>
-          <h2 className="text-base font-semibold text-slate-800">1. Bokningsbekräftelse</h2>
+          <h2 className="text-base font-semibold text-choc-800">1. Bokningsbekräftelse</h2>
           <p className="mt-3">
             En bokning anses bekräftad när du mottagit en skriftlig bekräftelse via e-post
             från oss. Bokningsförfrågningar som skickats via vår webbplats är inte bindande
@@ -25,7 +25,7 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">2. Avbokning och ombokning</h2>
+          <h2 className="text-base font-semibold text-choc-800">2. Avbokning och ombokning</h2>
           <p className="mt-3">Följande avbokningsregler gäller:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>
@@ -46,7 +46,7 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">3. Försening</h2>
+          <h2 className="text-base font-semibold text-choc-800">3. Försening</h2>
           <p className="mt-3">
             Vid försening reduceras behandlingstiden med motsvarande tid för att inte
             påverka nästa kunds bokade tid. Priset kvarstår oförändrat.
@@ -54,7 +54,7 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">4. Hälsotillstånd</h2>
+          <h2 className="text-base font-semibold text-choc-800">4. Hälsotillstånd</h2>
           <p className="mt-3">
             Du ansvarar för att informera terapeuten om eventuella hälsoproblem,
             medicinska tillstånd, allergier eller graviditet innan behandlingen påbörjas.
@@ -64,7 +64,7 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">5. Presentkort</h2>
+          <h2 className="text-base font-semibold text-choc-800">5. Presentkort</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>Presentkort är giltiga i 12 månader från inköpsdatum.</li>
             <li>Presentkort kan inte lösas in mot kontanter.</li>
@@ -74,7 +74,7 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">6. Betalning</h2>
+          <h2 className="text-base font-semibold text-choc-800">6. Betalning</h2>
           <p className="mt-3">
             Betalning sker i samband med behandlingen. Vi accepterar Swish, kortbetalning,
             Klarna och presentkort. Kontantbetalning hanteras ej.
@@ -82,7 +82,7 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">7. Klagomål</h2>
+          <h2 className="text-base font-semibold text-choc-800">7. Klagomål</h2>
           <p className="mt-3">
             Om du inte är nöjd med din behandling ber vi dig kontakta oss snarast möjligt
             via e-post eller telefon. Vi strävar efter att lösa eventuella klagomål
@@ -91,17 +91,17 @@ export default function VillkorPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-800">8. Kontakt</h2>
+          <h2 className="text-base font-semibold text-choc-800">8. Kontakt</h2>
           <ul className="mt-3 space-y-1 pl-4">
             <li>Wellness Studio</li>
             <li>Storgatan 12, 111 22 Stockholm</li>
             <li>
-              <a href="tel:+46701234567" className="text-rose-600 hover:underline">
+              <a href="tel:+46701234567" className="text-wood-600 hover:underline">
                 070-123 45 67
               </a>
             </li>
             <li>
-              <a href="mailto:kontakt@wellness.se" className="text-rose-600 hover:underline">
+              <a href="mailto:kontakt@wellness.se" className="text-wood-600 hover:underline">
                 kontakt@wellness.se
               </a>
             </li>

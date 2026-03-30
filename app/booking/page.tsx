@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "Boka massage – Wellness Studio",
     description:
       "Boka massage direkt online. Välj behandling, tid och skicka din förfrågan.",
-    images: [{ url: "https://picsum.photos/seed/booking-hero/1200/630", width: 1200, height: 630 }],
+    images: [{ url: "/images/hero.png", width: 1200, height: 630 }],
   },
 };
 
@@ -105,6 +105,62 @@ export default async function BookingPage() {
           <BookingClient services={services} />
         </section>
         <HowItWorks />
+
+        {/* Vad händer efter bokning? */}
+        <section className="bg-sand-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
+                Efter din bokning
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-choc-800 sm:text-4xl">
+                Vad händer härnäst?
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-choc-600">
+                Vi vill att du ska känna dig trygg hela vägen från bokning till
+                avslutad behandling.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  icon: "📩",
+                  title: "Bokningsbekräftelse",
+                  text: "Du får ett e-postmeddelande med din bokningsinformation inom några minuter.",
+                },
+                {
+                  icon: "⏰",
+                  title: "Påminnelse dagen innan",
+                  text: "Vi skickar en påminnelse kvällen innan så att du inte missar din tid.",
+                },
+                {
+                  icon: "🏠",
+                  title: "Välkommen till studion",
+                  text: "Kom gärna 5 minuter tidigt. Vi bjuder på vatten och en stund av lugn innan behandlingen.",
+                },
+                {
+                  icon: "💆",
+                  title: "Njut av behandlingen",
+                  text: "Terapeuten tar emot dig, går igenom eventuella önskemål och du slipper tänka på något annat.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex flex-col items-start gap-4 rounded-2xl bg-white p-7 ring-1 ring-sand-100"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-wood-50 text-2xl">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-choc-800">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-choc-600">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <Testimonials limit={3} />
         <PaymentOptions />
         <CancellationPolicy />

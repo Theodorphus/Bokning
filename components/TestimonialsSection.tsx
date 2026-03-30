@@ -58,7 +58,7 @@ function Stars({ count }: { count: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
-          className={`h-4 w-4 ${i < count ? "fill-rose-400" : "fill-white/20"}`}
+          className={`h-4 w-4 ${i < count ? "fill-wood-400" : "fill-white/20"}`}
           viewBox="0 0 20 20"
           aria-hidden="true"
         >
@@ -84,14 +84,14 @@ export default function TestimonialsSection() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-slate-900/80"
+          className="absolute inset-0 bg-choc-900/80"
         />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6">
         {/* Header */}
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-400">
+          <p className="text-sm font-semibold uppercase tracking-widest text-wood-400">
             Kundrecensioner
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -134,7 +134,7 @@ export default function TestimonialsSection() {
               </blockquote>
 
               <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-rose-600 text-xs font-bold text-white">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-wood-600 text-xs font-bold text-white">
                   {t.initials}
                 </div>
                 <div>
@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div className="ml-auto">
                   <svg
-                    className="h-5 w-5 text-rose-400/50"
+                    className="h-5 w-5 text-wood-400/50"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -160,7 +160,7 @@ export default function TestimonialsSection() {
         <div className="mt-12 text-center">
           <Link
             href="/booking"
-            className="inline-block rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+            className="inline-block rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
           >
             Boka din tid
           </Link>

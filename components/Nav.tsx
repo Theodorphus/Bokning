@@ -17,11 +17,11 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-choc-200 bg-white/95 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-slate-900"
+          className="text-lg font-bold tracking-tight text-choc-900"
         >
           Wellness Studio
         </Link>
@@ -32,8 +32,8 @@ export default function Nav() {
             <li key={href}>
               <Link
                 href={href}
-                className={`text-sm font-medium transition-colors hover:text-rose-600 ${
-                  pathname === href ? "text-rose-600" : "text-slate-600"
+                className={`text-sm font-medium transition-colors hover:text-wood-600 ${
+                  pathname === href ? "text-wood-600" : "text-choc-600"
                 }`}
               >
                 {label}
@@ -43,7 +43,7 @@ export default function Nav() {
           <li>
             <Link
               href="/booking"
-              className="rounded-full bg-rose-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-rose-500"
+              className="rounded-full bg-wood-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-wood-500"
             >
               Boka tid
             </Link>
@@ -54,7 +54,7 @@ export default function Nav() {
         <div className="flex items-center gap-3 lg:hidden">
           <Link
             href="/booking"
-            className="rounded-full bg-rose-600 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-rose-500"
+            className="rounded-full bg-wood-600 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-wood-500"
           >
             Boka
           </Link>
@@ -64,7 +64,7 @@ export default function Nav() {
             aria-label="Öppna meny"
           >
             <svg
-              className="h-6 w-6 text-slate-700"
+              className="h-6 w-6 text-choc-700"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -91,14 +91,14 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <ul className="flex flex-col border-t border-slate-100 lg:hidden">
+        <ul className="flex flex-col border-t border-choc-100 lg:hidden">
           {links.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
                 onClick={() => setOpen(false)}
-                className={`block px-6 py-3 text-sm font-medium transition-colors hover:bg-stone-50 ${
-                  pathname === href ? "text-rose-600" : "text-slate-700"
+                className={`block px-6 py-3 text-sm font-medium transition-colors hover:bg-sand-50 ${
+                  pathname === href ? "text-wood-600" : "text-choc-700"
                 }`}
               >
                 {label}

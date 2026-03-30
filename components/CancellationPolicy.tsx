@@ -23,16 +23,16 @@ const rules = [
 
 export default function CancellationPolicy() {
   return (
-    <section className="bg-rose-50 py-16 sm:py-20">
+    <section className="bg-wood-50 py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+          <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
             Avbokningspolicy
           </p>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-choc-800 sm:text-3xl">
             Bra att veta
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-slate-600">
+          <p className="mx-auto mt-4 max-w-lg text-choc-600">
             Vi reserverar tid enbart för dig. För att kunna erbjuda tider till
             alla behöver vi ett tydligt avbokningsförfarande.
           </p>
@@ -42,12 +42,12 @@ export default function CancellationPolicy() {
           {rules.map((r) => (
             <div
               key={r.title}
-              className="flex gap-4 rounded-2xl bg-white p-6 ring-1 ring-rose-100"
+              className="flex gap-4 rounded-2xl bg-white p-6 ring-1 ring-wood-100"
             >
               <span className="mt-0.5 text-2xl">{r.icon}</span>
               <div>
-                <p className="font-semibold text-slate-800">{r.title}</p>
-                <p className="mt-1.5 text-sm leading-6 text-slate-600">
+                <p className="font-semibold text-choc-800">{r.title}</p>
+                <p className="mt-1.5 text-sm leading-6 text-choc-600">
                   {r.text}
                 </p>
               </div>

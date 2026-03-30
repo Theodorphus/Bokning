@@ -7,8 +7,8 @@ export const testimonialData = [
     text: "Fantastisk massage! Kände mig helt ny efteråt. Otroligt skicklig på att hitta spänningar och lösa upp dem. Kommer definitivt tillbaka.",
     rating: 5,
     initials: "ES",
-    color: "bg-rose-100 text-rose-700",
-    avatarBg: "from-rose-200 to-rose-100",
+    color: "bg-wood-100 text-wood-700",
+    avatarBg: "from-wood-200 to-wood-100",
   },
   {
     name: "Johan M.",
@@ -16,8 +16,8 @@ export const testimonialData = [
     text: "Bokade en djupvävnadsmassage och det var precis vad jag behövde. Professionell, omtänksam och med perfekt trycknivå. Toppen!",
     rating: 5,
     initials: "JM",
-    color: "bg-stone-200 text-stone-700",
-    avatarBg: "from-stone-300 to-stone-200",
+    color: "bg-sand-200 text-sand-700",
+    avatarBg: "from-sand-300 to-sand-200",
   },
   {
     name: "Maria K.",
@@ -25,8 +25,8 @@ export const testimonialData = [
     text: "Lugn och fin lokal, och behandlingen översteg mina förväntningar. Perfekt avkoppling efter en stressig period. Varmt rekommenderat.",
     rating: 5,
     initials: "MK",
-    color: "bg-rose-200 text-rose-800",
-    avatarBg: "from-rose-300 to-rose-200",
+    color: "bg-wood-200 text-wood-800",
+    avatarBg: "from-wood-300 to-wood-200",
   },
   {
     name: "Anders L.",
@@ -34,8 +34,8 @@ export const testimonialData = [
     text: "Har gått hit regelbundet i över ett år. Märker stor skillnad i kroppen. Bästa investeringen jag gjort för min hälsa och mitt välmående.",
     rating: 5,
     initials: "AL",
-    color: "bg-stone-100 text-stone-700",
-    avatarBg: "from-stone-200 to-stone-100",
+    color: "bg-sand-100 text-sand-700",
+    avatarBg: "from-sand-200 to-sand-100",
   },
   {
     name: "Sofia B.",
@@ -43,8 +43,8 @@ export const testimonialData = [
     text: "Fick ett presentkort av min man och det var en underbar upplevelse. Proffsig och avslappnad atmosfär. Perfekt present till vem som helst!",
     rating: 5,
     initials: "SB",
-    color: "bg-rose-100 text-rose-700",
-    avatarBg: "from-rose-200 to-rose-100",
+    color: "bg-wood-100 text-wood-700",
+    avatarBg: "from-wood-200 to-wood-100",
   },
   {
     name: "Lars W.",
@@ -52,8 +52,8 @@ export const testimonialData = [
     text: "Tog hit min chef för företagsmassage och alla var supernöjda. Smidigt, professionellt och verkligen välgörande. Vi bokar igen!",
     rating: 5,
     initials: "LW",
-    color: "bg-stone-200 text-stone-700",
-    avatarBg: "from-stone-300 to-stone-200",
+    color: "bg-sand-200 text-sand-700",
+    avatarBg: "from-sand-300 to-sand-200",
   },
 ];
 
@@ -63,7 +63,7 @@ function Stars({ count }: { count: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
-          className={`h-4 w-4 ${i < count ? "fill-rose-400 text-rose-400" : "fill-stone-200 text-stone-200"}`}
+          className={`h-4 w-4 ${i < count ? "fill-wood-400 text-wood-400" : "fill-sand-200 text-sand-200"}`}
           viewBox="0 0 20 20"
           aria-hidden="true"
         >
@@ -81,7 +81,7 @@ interface TestimonialsProps {
 
 export default function Testimonials({ limit, bg = "stone" }: TestimonialsProps) {
   const items = limit ? testimonialData.slice(0, limit) : testimonialData;
-  const bgClass = bg === "white" ? "bg-white" : "bg-stone-50";
+  const bgClass = bg === "white" ? "bg-white" : "bg-sand-50";
 
   return (
     <section className={`${bgClass} py-20 sm:py-28`}>
@@ -94,10 +94,10 @@ export default function Testimonials({ limit, bg = "stone" }: TestimonialsProps)
 
         {/* Rating summary */}
         <div className="mt-8 flex justify-center">
-          <div className="flex items-center gap-3 rounded-full bg-white px-6 py-3 shadow-sm ring-1 ring-stone-100">
+          <div className="flex items-center gap-3 rounded-full bg-white px-6 py-3 shadow-sm ring-1 ring-sand-100">
             <Stars count={5} />
-            <span className="text-sm font-semibold text-slate-800">4.9 av 5</span>
-            <span className="text-sm text-slate-500">· 120+ recensioner</span>
+            <span className="text-sm font-semibold text-choc-800">4.9 av 5</span>
+            <span className="text-sm text-choc-500">· 120+ recensioner</span>
           </div>
         </div>
 
@@ -105,24 +105,24 @@ export default function Testimonials({ limit, bg = "stone" }: TestimonialsProps)
           {items.map((t) => (
             <li
               key={t.name}
-              className="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-stone-100 transition-shadow hover:shadow-md"
+              className="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-sand-100 transition-shadow hover:shadow-md"
             >
               <Stars count={t.rating} />
-              <blockquote className="mt-4 flex-1 text-sm leading-7 text-slate-600">
+              <blockquote className="mt-4 flex-1 text-sm leading-7 text-choc-600">
                 &ldquo;{t.text}&rdquo;
               </blockquote>
-              <div className="mt-6 flex items-center gap-3 border-t border-stone-100 pt-5">
+              <div className="mt-6 flex items-center gap-3 border-t border-sand-100 pt-5">
                 <div
                   className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${t.avatarBg} text-xs font-bold ${t.color}`}
                 >
                   {t.initials}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-800">{t.name}</p>
-                  <p className="text-xs text-slate-500">{t.location}</p>
+                  <p className="text-sm font-semibold text-choc-800">{t.name}</p>
+                  <p className="text-xs text-choc-500">{t.location}</p>
                 </div>
                 <div className="ml-auto">
-                  <svg className="h-5 w-5 text-rose-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="h-5 w-5 text-wood-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>

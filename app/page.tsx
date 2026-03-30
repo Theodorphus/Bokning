@@ -111,11 +111,11 @@ export default function HomePage() {
             <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {usps.map((usp) => (
                 <li key={usp.title} className="flex flex-col items-start">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-wood-50 text-wood-600">
                     {usp.icon}
                   </div>
-                  <h3 className="mt-4 text-base font-semibold text-slate-800">{usp.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{usp.text}</p>
+                  <h3 className="mt-4 text-base font-semibold text-choc-900">{usp.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-choc-700">{usp.text}</p>
                 </li>
               ))}
             </ul>
@@ -147,21 +147,21 @@ export default function HomePage() {
         <InstagramSection />
 
         {/* 11. Final CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-rose-600 to-rose-500 py-20">
+        <section className="relative overflow-hidden bg-gradient-to-r from-wood-600 to-wood-500 py-20">
           <div aria-hidden="true" className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
           <div aria-hidden="true" className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
           <div className="relative mx-auto max-w-5xl px-6 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Redo för din nästa behandling?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-rose-100">
+            <p className="mx-auto mt-4 max-w-xl text-wood-100">
               Boka enkelt online – välj behandling, ange önskad tid och vi
               återkommer med en bekräftelse.
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/booking"
-                className="rounded-full bg-white px-8 py-4 text-sm font-semibold text-rose-600 shadow-md transition-colors hover:bg-rose-50"
+                className="rounded-full bg-white px-8 py-4 text-sm font-semibold text-wood-600 shadow-md transition-colors hover:bg-wood-50"
               >
                 Boka din tid nu
               </Link>

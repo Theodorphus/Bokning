@@ -51,20 +51,20 @@ const details = [
 
 export default function Location() {
   return (
-    <section className="bg-stone-50 py-20 sm:py-28">
+    <section className="bg-sand-50 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+          <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
             Hitta hit
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-choc-800 sm:text-4xl">
             Plats &amp; vägbeskrivning
           </h2>
         </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Map */}
-          <div className="overflow-hidden rounded-2xl shadow-md ring-1 ring-stone-200">
+          <div className="overflow-hidden rounded-2xl shadow-md ring-1 ring-sand-200">
             {/* Replace src with your Google Maps embed URL */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.6!2d18.0686!3d59.3293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTnCsDE5JzQ1LjUiTiAxOMKwMDQnMDYuOSJF!5e0!3m2!1ssv!2sse!4v1"
@@ -83,9 +83,9 @@ export default function Location() {
           <div className="flex flex-col gap-6">
             {details.map((d) => (
               <div key={d.label} className="flex gap-4">
-                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-rose-50">
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-wood-50">
                   <svg
-                    className="h-5 w-5 text-rose-500"
+                    className="h-5 w-5 text-wood-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -94,8 +94,8 @@ export default function Location() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-800">{d.label}</p>
-                  <p className="mt-0.5 whitespace-pre-line text-sm leading-6 text-slate-600">
+                  <p className="font-semibold text-choc-800">{d.label}</p>
+                  <p className="mt-0.5 whitespace-pre-line text-sm leading-6 text-choc-600">
                     {d.value}
                   </p>
                 </div>

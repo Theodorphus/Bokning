@@ -47,9 +47,9 @@ export default function AboutMeSection() {
             </div>
 
             {/* Experience badge */}
-            <div className="absolute -bottom-4 -right-4 rounded-2xl bg-rose-600 px-5 py-4 shadow-xl">
+            <div className="absolute -bottom-4 -right-4 rounded-2xl bg-wood-600 px-5 py-4 shadow-xl">
               <p className="text-2xl font-bold text-white leading-none">10+</p>
-              <p className="mt-0.5 text-xs font-medium text-rose-100">
+              <p className="mt-0.5 text-xs font-medium text-wood-100">
                 års erfarenhet
               </p>
             </div>
@@ -57,22 +57,22 @@ export default function AboutMeSection() {
             {/* Decoration */}
             <div
               aria-hidden="true"
-              className="absolute -top-4 -left-4 h-32 w-32 rounded-full bg-rose-100/60 blur-2xl"
+              className="absolute -top-4 -left-4 h-32 w-32 rounded-full bg-wood-100/60 blur-2xl"
             />
           </div>
 
           {/* Bio */}
           <div>
-            <h3 className="text-xl font-bold text-slate-800">
+            <h3 className="text-xl font-bold text-choc-900">
               Anna Lindgren, Massageterapeut
             </h3>
-            <p className="mt-4 leading-8 text-slate-600">
+            <p className="mt-4 leading-8 text-choc-700">
               Välkommen till min studio! Jag har arbetat som massageterapeut i
               över tio år och brinner för att hjälpa människor att känna sig
               bättre – både fysiskt och mentalt. Varje behandling är för mig ett
               sätt att ge dig utrymme att slappna av och återhämta dig.
             </p>
-            <p className="mt-4 leading-8 text-slate-600">
+            <p className="mt-4 leading-8 text-choc-700">
               Jag tror på ett holistiskt synsätt där kropp och sinne hänger
               ihop. Oavsett om du söker avkoppling efter en stressig period,
               lindring av muskelspänningar eller en stunds ro för dig själv – är
@@ -81,16 +81,16 @@ export default function AboutMeSection() {
 
             {/* Certifications */}
             <div className="mt-8">
-              <h4 className="font-semibold text-slate-800">
+              <h4 className="font-semibold text-choc-900">
                 Utbildning &amp; certifikat
               </h4>
               <ul className="mt-3 space-y-2">
                 {certifications.map((c) => (
                   <li
                     key={c}
-                    className="flex items-start gap-2 text-sm text-slate-600"
+                    className="flex items-start gap-2 text-sm text-choc-700"
                   >
-                    <span className="mt-0.5 flex-shrink-0 text-rose-400">✓</span>
+                    <span className="mt-0.5 flex-shrink-0 text-wood-400">✓</span>
                     {c}
                   </li>
                 ))}
@@ -99,12 +99,12 @@ export default function AboutMeSection() {
 
             {/* Specializations */}
             <div className="mt-8">
-              <h4 className="font-semibold text-slate-800">Specialiseringar</h4>
+              <h4 className="font-semibold text-choc-900">Specialiseringar</h4>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {specializations.map((s) => (
                   <li
                     key={s}
-                    className="rounded-full border border-rose-200 bg-rose-50 px-4 py-1.5 text-xs font-medium text-rose-700"
+                    className="rounded-full border border-wood-200 bg-wood-50 px-4 py-1.5 text-xs font-medium text-wood-700"
                   >
                     ✦ {s}
                   </li>
@@ -114,7 +114,7 @@ export default function AboutMeSection() {
 
             <Link
               href="/about"
-              className="mt-8 inline-block rounded-full bg-rose-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+              className="mt-8 inline-block rounded-full bg-wood-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
             >
               Läs mer om mig
             </Link>

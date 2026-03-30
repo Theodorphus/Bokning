@@ -17,22 +17,22 @@ export default function OpeningHours() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Opening hours */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+            <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
               Öppettider
             </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-choc-800 sm:text-3xl">
               När vi har öppet
             </h2>
 
-            <dl className="mt-8 divide-y divide-stone-100">
+            <dl className="mt-8 divide-y divide-sand-100">
               {hours.map(({ day, time, open }) => (
                 <div
                   key={day}
                   className="flex items-center justify-between py-3.5"
                 >
-                  <dt className="text-sm font-medium text-slate-700">{day}</dt>
+                  <dt className="text-sm font-medium text-choc-700">{day}</dt>
                   <dd
-                    className={`text-sm font-semibold ${open ? "text-slate-800" : "text-slate-400"}`}
+                    className={`text-sm font-semibold ${open ? "text-choc-800" : "text-choc-400"}`}
                   >
                     {time}
                   </dd>
@@ -40,7 +40,7 @@ export default function OpeningHours() {
               ))}
             </dl>
 
-            <p className="mt-6 text-sm text-slate-500">
+            <p className="mt-6 text-sm text-choc-500">
               * Kvällstider och helger kan variera. Kontakta oss för aktuell
               information.
             </p>
@@ -48,21 +48,21 @@ export default function OpeningHours() {
 
           {/* Contact + CTA */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+            <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
               Kontakt
             </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-choc-800 sm:text-3xl">
               Nå oss enkelt
             </h2>
 
             <div className="mt-8 space-y-5">
               <a
                 href="tel:+46701234567"
-                className="flex items-center gap-4 rounded-xl border border-stone-200 bg-stone-50 px-5 py-4 transition-colors hover:bg-rose-50 hover:border-rose-200"
+                className="flex items-center gap-4 rounded-xl border border-sand-200 bg-sand-50 px-5 py-4 transition-colors hover:bg-wood-50 hover:border-wood-200"
               >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-rose-100">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-wood-100">
                   <svg
-                    className="h-5 w-5 text-rose-600"
+                    className="h-5 w-5 text-wood-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -76,8 +76,8 @@ export default function OpeningHours() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500">Telefon</p>
-                  <p className="font-semibold text-slate-800">
+                  <p className="text-xs text-choc-500">Telefon</p>
+                  <p className="font-semibold text-choc-800">
                     070-123 45 67
                   </p>
                 </div>
@@ -85,11 +85,11 @@ export default function OpeningHours() {
 
               <a
                 href="mailto:kontakt@wellness.se"
-                className="flex items-center gap-4 rounded-xl border border-stone-200 bg-stone-50 px-5 py-4 transition-colors hover:bg-rose-50 hover:border-rose-200"
+                className="flex items-center gap-4 rounded-xl border border-sand-200 bg-sand-50 px-5 py-4 transition-colors hover:bg-wood-50 hover:border-wood-200"
               >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-rose-100">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-wood-100">
                   <svg
-                    className="h-5 w-5 text-rose-600"
+                    className="h-5 w-5 text-wood-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -103,8 +103,8 @@ export default function OpeningHours() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500">E-post</p>
-                  <p className="font-semibold text-slate-800">
+                  <p className="text-xs text-choc-500">E-post</p>
+                  <p className="font-semibold text-choc-800">
                     kontakt@wellness.se
                   </p>
                 </div>
@@ -113,7 +113,7 @@ export default function OpeningHours() {
 
             <Link
               href="/booking"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-xl bg-rose-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-rose-500"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-xl bg-wood-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-wood-500"
             >
               Boka din tid nu
             </Link>

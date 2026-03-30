@@ -17,8 +17,8 @@ export default function ServiceCard({
   const cardClasses = [
     "group flex h-full cursor-pointer flex-col overflow-hidden rounded-xl border bg-white shadow-sm transition-all",
     selected
-      ? "border-rose-400 ring-2 ring-rose-400"
-      : "border-slate-200 hover:shadow-md hover:border-stone-300",
+      ? "border-wood-400 ring-2 ring-wood-400"
+      : "border-choc-200 hover:shadow-md hover:border-sand-300",
   ].join(" ");
 
   return (
@@ -35,7 +35,7 @@ export default function ServiceCard({
       tabIndex={0}
     >
       {service.serviceFields.image?.sourceUrl && (
-        <div className="relative aspect-video overflow-hidden bg-stone-100">
+        <div className="relative aspect-video overflow-hidden bg-sand-100">
           <Image
             src={service.serviceFields.image.sourceUrl}
             alt={service.title}
@@ -47,16 +47,16 @@ export default function ServiceCard({
       )}
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-semibold text-slate-800">{service.title}</h3>
+        <h3 className="font-semibold text-choc-800">{service.title}</h3>
 
         {service.serviceFields.shortDescription && (
-          <p className="mt-2 flex-1 text-sm leading-6 text-slate-600 line-clamp-3">
+          <p className="mt-2 flex-1 text-sm leading-6 text-choc-600 line-clamp-3">
             {service.serviceFields.shortDescription}
           </p>
         )}
 
         {service.serviceFields.price && (
-          <p className="mt-3 text-sm font-semibold text-rose-600">
+          <p className="mt-3 text-sm font-semibold text-wood-600">
             {service.serviceFields.price}
           </p>
         )}
@@ -66,8 +66,8 @@ export default function ServiceCard({
           className={[
             "mt-4 rounded-lg px-4 py-2 text-sm font-semibold transition-colors",
             selected
-              ? "bg-rose-100 text-rose-700"
-              : "bg-rose-600 text-white hover:bg-rose-500",
+              ? "bg-wood-100 text-wood-700"
+              : "bg-wood-600 text-white hover:bg-wood-500",
           ].join(" ")}
           onClick={(e) => {
             e.stopPropagation();

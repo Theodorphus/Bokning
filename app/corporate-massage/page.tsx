@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Företagsmassage – Wellness Studio",
     description:
       "Professionell företagsmassage som minskar stress och ökar välmående på arbetsplatsen.",
-    images: [{ url: "https://picsum.photos/seed/corporate-office/1200/630", width: 1200, height: 630 }],
+    images: [{ url: "/images/foretag.png", width: 1200, height: 630 }],
   },
 };
 
@@ -94,32 +94,32 @@ export default function CorporateMassagePage() {
 
       <div>
         {/* Hero with image */}
-        <section className="relative overflow-hidden bg-slate-900 py-24 sm:py-36">
+        <section className="relative overflow-hidden bg-choc-900 py-24 sm:py-36">
           <Image
-            src="https://picsum.photos/seed/corporate-office/1600/900"
+            src="/images/foretag.png"
             alt="Företagsmassage – välmående på arbetsplatsen"
             fill
             className="object-cover opacity-30"
             priority
             sizes="100vw"
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-choc-900/60 via-choc-900/40 to-choc-900/80" />
 
           <div className="relative mx-auto max-w-5xl px-6 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
+            <p className="text-sm font-semibold uppercase tracking-widest text-wood-300">
               Företagsmassage
             </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Investera i ditt teams välmående
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-choc-200">
               Professionell massage för din personalgrupp – på plats hos er eller
               i vår studio. Minskar stress, ökar fokus och stärker teamkänslan.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
                 href="#contact"
-                className="rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+                className="rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
               >
                 Begär offert
               </a>
@@ -132,10 +132,10 @@ export default function CorporateMassagePage() {
             </div>
 
             {/* Trust badges */}
-            <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
-              <span className="flex items-center gap-2"><span className="text-rose-400">✓</span> 50+ nöjda företagskunder</span>
-              <span className="flex items-center gap-2"><span className="text-rose-400">✓</span> Svarar inom 1 arbetsdag</span>
-              <span className="flex items-center gap-2"><span className="text-rose-400">✓</span> Faktura till företaget</span>
+            <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-choc-300">
+              <span className="flex items-center gap-2"><span className="text-wood-400">✓</span> 50+ nöjda företagskunder</span>
+              <span className="flex items-center gap-2"><span className="text-wood-400">✓</span> Svarar inom 1 arbetsdag</span>
+              <span className="flex items-center gap-2"><span className="text-wood-400">✓</span> Faktura till företaget</span>
             </div>
           </div>
         </section>
@@ -150,23 +150,65 @@ export default function CorporateMassagePage() {
             />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {benefits.map((b) => (
-                <div key={b.title} className="rounded-2xl bg-stone-50 p-7 ring-1 ring-stone-100">
+                <div key={b.title} className="rounded-2xl bg-sand-50 p-7 ring-1 ring-sand-100">
                   <span className="text-3xl">{b.icon}</span>
-                  <h3 className="mt-4 font-semibold text-slate-800">{b.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{b.text}</p>
+                  <h3 className="mt-4 font-semibold text-choc-800">{b.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-choc-600">{b.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Mid-page CTA */}
+        <section className="bg-wood-600 py-12">
+          <div className="mx-auto max-w-3xl px-6 text-center">
+            <p className="text-lg font-semibold text-white">
+              Redo att investera i ditt teams välmående?
+            </p>
+            <p className="mt-2 text-wood-100 text-sm">
+              Vi svarar inom en arbetsdag och skräddarsyr ett upplägg för just er.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              <a
+                href="#contact"
+                className="rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-wood-600 shadow-md transition-colors hover:bg-wood-50"
+              >
+                Begär offert nu
+              </a>
+              <a
+                href="tel:+46701234567"
+                className="rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                Ring oss direkt
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Packages */}
-        <section id="packages" className="bg-stone-50 py-20 sm:py-24">
+        <section id="packages" className="bg-sand-50 py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <SectionHeader
               title="Paket & priser"
               body="Alla priser är exkl. moms. Kontakta oss för en skräddarsydd offert."
             />
+
+            {/* Image banner */}
+            <div className="mt-10 relative aspect-[21/7] overflow-hidden rounded-2xl shadow-lg">
+              <Image
+                src="/images/foretag.png"
+                alt="Företagsmassage på arbetsplatsen"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 80vw"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-choc-900/60 to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-center px-10">
+                <p className="text-sm font-semibold uppercase tracking-widest text-wood-300">Flexibla upplägg</p>
+                <p className="mt-2 text-2xl font-bold text-white">Välj det paket som passar ert team</p>
+              </div>
+            </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {packages.map((p) => (
                 <div
@@ -174,26 +216,26 @@ export default function CorporateMassagePage() {
                   className={[
                     "relative flex flex-col rounded-2xl p-8 transition-shadow hover:shadow-lg",
                     p.highlight
-                      ? "bg-rose-600 text-white shadow-xl"
-                      : "bg-white ring-1 ring-stone-200",
+                      ? "bg-wood-600 text-white shadow-xl"
+                      : "bg-white ring-1 ring-sand-200",
                   ].join(" ")}
                 >
                   {p.highlight && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-4 py-1 text-xs font-semibold text-rose-600 shadow-sm">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-4 py-1 text-xs font-semibold text-wood-600 shadow-sm">
                       Populärast
                     </span>
                   )}
-                  <h3 className={`text-xl font-bold ${p.highlight ? "text-white" : "text-slate-800"}`}>
+                  <h3 className={`text-xl font-bold ${p.highlight ? "text-white" : "text-choc-800"}`}>
                     {p.name}
                   </h3>
-                  <p className={`mt-1 text-sm ${p.highlight ? "text-rose-100" : "text-slate-500"}`}>
+                  <p className={`mt-1 text-sm ${p.highlight ? "text-wood-100" : "text-choc-500"}`}>
                     {p.sessions} · {p.duration}
                   </p>
                   <ul className="mt-6 flex-1 space-y-3">
                     {p.includes.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm">
-                        <span className={`mt-0.5 flex-shrink-0 ${p.highlight ? "text-rose-200" : "text-rose-500"}`}>✓</span>
-                        <span className={p.highlight ? "text-rose-50" : "text-slate-600"}>{item}</span>
+                        <span className={`mt-0.5 flex-shrink-0 ${p.highlight ? "text-wood-200" : "text-wood-500"}`}>✓</span>
+                        <span className={p.highlight ? "text-wood-50" : "text-choc-600"}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -202,8 +244,8 @@ export default function CorporateMassagePage() {
                     className={[
                       "mt-8 rounded-xl px-4 py-3 text-center text-sm font-semibold transition-colors",
                       p.highlight
-                        ? "bg-white text-rose-600 hover:bg-rose-50"
-                        : "bg-rose-600 text-white hover:bg-rose-500",
+                        ? "bg-white text-wood-600 hover:bg-wood-50"
+                        : "bg-wood-600 text-white hover:bg-wood-500",
                     ].join(" ")}
                   >
                     Välj {p.name}
@@ -215,32 +257,45 @@ export default function CorporateMassagePage() {
         </section>
 
         {/* Social proof */}
-        <section className="bg-white py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <SectionHeader
-              eyebrow="Vad företagen säger"
-              title="Uppskattad av över 50 företag"
-            />
+        <section className="relative overflow-hidden py-20 sm:py-24">
+          <Image
+            src="/images/bakgrund2.png"
+            alt=""
+            fill
+            aria-hidden="true"
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-choc-900/75" />
+          <div className="relative mx-auto max-w-5xl px-6">
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-widest text-wood-300">
+                Vad företagen säger
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Uppskattad av över 50 företag
+              </h2>
+            </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {socialProof.map((t) => (
-                <div key={t.name} className="flex flex-col rounded-2xl bg-stone-50 p-7 ring-1 ring-stone-100">
+                <div key={t.name} className="flex flex-col rounded-2xl bg-white/10 p-7 ring-1 ring-white/20 backdrop-blur-sm">
                   <div className="flex items-center gap-0.5 mb-4">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} className="h-4 w-4 fill-rose-400" viewBox="0 0 20 20">
+                      <svg key={i} className="h-4 w-4 fill-wood-400" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
                   </div>
-                  <blockquote className="flex-1 text-sm leading-7 text-slate-600">
+                  <blockquote className="flex-1 text-sm leading-7 text-choc-200">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
-                  <div className="mt-5 flex items-center gap-3 border-t border-stone-100 pt-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-rose-100 text-xs font-bold text-rose-700">
+                  <div className="mt-5 flex items-center gap-3 border-t border-white/20 pt-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-wood-600 text-xs font-bold text-white">
                       {t.initials}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-slate-800">{t.name}</p>
-                      <p className="text-xs text-slate-500">{t.role}, {t.company}</p>
+                      <p className="text-sm font-semibold text-white">{t.name}</p>
+                      <p className="text-xs text-choc-300">{t.role}, {t.company}</p>
                     </div>
                   </div>
                 </div>
@@ -253,7 +308,7 @@ export default function CorporateMassagePage() {
         <HowItWorks variant="corporate" />
 
         {/* Contact form */}
-        <section id="contact" className="bg-stone-50 py-20 sm:py-24">
+        <section id="contact" className="bg-sand-50 py-20 sm:py-24">
           <div className="mx-auto max-w-2xl px-6">
             <div className="text-center">
               <SectionHeader
@@ -269,22 +324,22 @@ export default function CorporateMassagePage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-gradient-to-br from-rose-50 to-stone-50 py-16">
+        <section className="bg-gradient-to-br from-wood-50 to-sand-50 py-16">
           <div className="mx-auto max-w-xl px-6 text-center">
-            <h2 className="text-2xl font-bold text-slate-800">Frågor? Ring oss direkt.</h2>
-            <p className="mt-3 text-slate-600">
+            <h2 className="text-2xl font-bold text-choc-800">Frågor? Ring oss direkt.</h2>
+            <p className="mt-3 text-choc-600">
               Vi svarar snabbt och hjälper dig hitta det bästa upplägget för ert företag.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                 href="tel:+46701234567"
-                className="rounded-full bg-rose-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+                className="rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
               >
                 070-123 45 67
               </a>
               <Link
                 href="/booking"
-                className="rounded-full border border-stone-300 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-stone-50"
+                className="rounded-full border border-sand-300 bg-white px-8 py-4 text-sm font-semibold text-choc-700 transition-colors hover:bg-sand-50"
               >
                 Boka privat behandling
               </Link>

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-slate-900 py-24 sm:py-36 lg:py-44">
+    <section className="relative overflow-hidden bg-choc-900 py-24 sm:py-36 lg:py-44">
       <Image
         src="/images/hero.png"
         alt="Avkopplande massage hos Wellness Studio i Stockholm"
@@ -14,25 +14,28 @@ export default function HeroSection() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/30 to-slate-900/80"
+        className="absolute inset-0 bg-gradient-to-b from-choc-900/50 via-choc-900/30 to-choc-900/80"
       />
 
       <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
+        <p className="text-sm font-semibold uppercase tracking-widest text-wood-300">
           Välkommen till Wellness Studio
         </p>
         <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
           Hitta din balans.<br className="hidden sm:block" /> Känn skillnaden.
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200">
+        <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-choc-200">
           Professionell massage i hjärtat av Stockholm. Varje behandling
           skräddarsys efter just dina behov – oavsett om du söker avkoppling
           eller smärtlindring.
         </p>
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <p className="mt-4 text-sm text-choc-400">
+          Ingen bindningstid &nbsp;·&nbsp; Bekräftelse direkt via e-post &nbsp;·&nbsp; Avboka kostnadsfritt upp till 24h
+        </p>
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/booking"
-            className="rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+            className="rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500 focus:outline-none focus:ring-2 focus:ring-wood-400 focus:ring-offset-2 focus:ring-offset-choc-900"
           >
             Boka din tid
           </Link>
@@ -45,17 +48,17 @@ export default function HeroSection() {
         </div>
 
         {/* Trust signals */}
-        <div className="mt-14 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
+        <div className="mt-14 flex flex-wrap justify-center gap-6 text-sm text-choc-300">
           <span className="flex items-center gap-2">
-            <span className="text-rose-400">✓</span>
+            <span className="text-wood-400">✓</span>
             Certifierad terapeut
           </span>
           <span className="flex items-center gap-2">
-            <span className="text-rose-400">✓</span>
+            <span className="text-wood-400">✓</span>
             10+ års erfarenhet
           </span>
           <span className="flex items-center gap-2">
-            <span className="text-rose-400">✓</span>
+            <span className="text-wood-400">✓</span>
             120+ nöjda kunder
           </span>
         </div>

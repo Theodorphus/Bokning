@@ -11,7 +11,7 @@ const benefits = [
 
 export default function CorporateMassageSection() {
   return (
-    <section className="overflow-hidden bg-slate-900 py-20 sm:py-28">
+    <section className="overflow-hidden bg-choc-900 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image */}
@@ -26,25 +26,25 @@ export default function CorporateMassageSection() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-choc-900/40 to-transparent"
               />
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-5 -right-5 hidden rounded-2xl bg-rose-600 p-5 shadow-xl lg:block">
+            <div className="absolute -bottom-5 -right-5 hidden rounded-2xl bg-wood-600 p-5 shadow-xl lg:block">
               <p className="text-2xl font-bold text-white">50+</p>
-              <p className="text-xs font-medium text-rose-100">nöjda företag</p>
+              <p className="text-xs font-medium text-wood-100">nöjda företag</p>
             </div>
           </div>
 
           {/* Content */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-400">
+            <p className="text-sm font-semibold uppercase tracking-widest text-wood-400">
               Företagsmassage
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Investera i ditt teams välmående
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-300">
+            <p className="mt-5 text-lg leading-8 text-choc-300">
               Professionell massage för din personalgrupp – på plats hos er eller
               i vår studio. Minskar stress, ökar fokus och stärker teamkänslan.
             </p>
@@ -58,7 +58,7 @@ export default function CorporateMassageSection() {
                   <span className="text-xl flex-shrink-0">{b.icon}</span>
                   <div>
                     <p className="text-sm font-semibold text-white">{b.title}</p>
-                    <p className="mt-1 text-xs leading-5 text-slate-400">{b.text}</p>
+                    <p className="mt-1 text-xs leading-5 text-choc-400">{b.text}</p>
                   </div>
                 </li>
               ))}
@@ -67,7 +67,7 @@ export default function CorporateMassageSection() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/corporate-massage#contact"
-                className="rounded-full bg-rose-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+                className="rounded-full bg-wood-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
               >
                 Begär offert
               </Link>

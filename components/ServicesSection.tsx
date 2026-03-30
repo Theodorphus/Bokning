@@ -52,7 +52,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="bg-stone-50 py-20 sm:py-28">
+    <section className="bg-sand-50 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
@@ -62,7 +62,7 @@ export default function ServicesSection() {
           />
           <Link
             href="/services"
-            className="flex-shrink-0 text-sm font-semibold text-rose-600 transition-colors hover:text-rose-500"
+            className="flex-shrink-0 text-sm font-semibold text-wood-600 transition-colors hover:text-wood-500"
           >
             Se alla behandlingar →
           </Link>
@@ -73,10 +73,10 @@ export default function ServicesSection() {
             <li key={service.slug}>
               <Link
                 href={`/services/${service.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 transition-shadow hover:shadow-lg"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-100 transition-shadow hover:shadow-lg"
               >
                 {/* Image */}
-                <div className="relative aspect-video overflow-hidden bg-stone-100">
+                <div className="relative aspect-video overflow-hidden bg-sand-100">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -88,20 +88,20 @@ export default function ServicesSection() {
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-semibold text-slate-800 transition-colors group-hover:text-rose-600">
+                  <h3 className="font-semibold text-choc-900 transition-colors group-hover:text-wood-600">
                     {service.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-sm leading-7 text-slate-600 line-clamp-3">
+                  <p className="mt-2 flex-1 text-sm leading-7 text-choc-700 line-clamp-3">
                     {service.description}
                   </p>
-                  <div className="mt-5 flex items-center justify-between border-t border-stone-100 pt-4">
+                  <div className="mt-5 flex items-center justify-between border-t border-sand-200 pt-4">
                     <div>
-                      <span className="block text-sm font-semibold text-rose-600">
+                      <span className="block text-sm font-semibold text-wood-600">
                         {service.price}
                       </span>
-                      <span className="text-xs text-slate-400">{service.duration}</span>
+                      <span className="text-xs text-choc-600">{service.duration}</span>
                     </div>
-                    <span className="rounded-full bg-rose-50 px-3 py-1 text-xs font-medium text-rose-600 transition-colors group-hover:bg-rose-100">
+                    <span className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-600 transition-colors group-hover:bg-wood-100">
                       Läs mer →
                     </span>
                   </div>
@@ -114,7 +114,7 @@ export default function ServicesSection() {
           <li>
             <Link
               href="/booking"
-              className="group flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-rose-600 p-8 text-center shadow-sm transition-shadow hover:shadow-lg hover:bg-rose-500"
+              className="group flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-wood-600 p-8 text-center shadow-sm transition-shadow hover:shadow-lg hover:bg-wood-500"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20">
                 <svg
@@ -133,11 +133,11 @@ export default function ServicesSection() {
               </div>
               <div>
                 <p className="font-bold text-white">Osäker på vilken?</p>
-                <p className="mt-1 text-sm text-rose-100">
+                <p className="mt-1 text-sm text-wood-100">
                   Boka en tid så hjälper vi dig välja rätt behandling.
                 </p>
               </div>
-              <span className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-rose-600 transition-colors group-hover:bg-rose-50">
+              <span className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-wood-600 transition-colors group-hover:bg-wood-50">
                 Boka nu
               </span>
             </Link>

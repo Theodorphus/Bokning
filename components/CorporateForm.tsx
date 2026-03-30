@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 type FormStatus = "idle" | "loading" | "error";
 
 const inputClasses =
-  "w-full rounded-lg px-4 py-3 text-sm text-slate-800 ring-1 ring-stone-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400 transition-shadow bg-white disabled:bg-stone-50 disabled:text-slate-400";
+  "w-full rounded-lg px-4 py-3 text-sm text-choc-800 ring-1 ring-sand-200 placeholder:text-choc-400 focus:outline-none focus:ring-2 focus:ring-wood-400 transition-shadow bg-white disabled:bg-sand-50 disabled:text-choc-400";
 
-const labelClasses = "block text-sm font-medium text-slate-700 mb-1.5";
+const labelClasses = "block text-sm font-medium text-choc-700 mb-1.5";
 
 export default function CorporateForm() {
   const router = useRouter();
@@ -59,12 +59,12 @@ export default function CorporateForm() {
   const isLoading = status === "loading";
 
   return (
-    <div className="rounded-2xl bg-stone-50 px-8 py-10 ring-1 ring-stone-100">
+    <div className="rounded-2xl bg-sand-50 px-8 py-10 ring-1 ring-sand-100">
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="corp-name" className={labelClasses}>
-              Namn <span className="text-rose-500">*</span>
+              Namn <span className="text-wood-500">*</span>
             </label>
             <input
               id="corp-name"
@@ -78,7 +78,7 @@ export default function CorporateForm() {
           </div>
           <div>
             <label htmlFor="corp-company" className={labelClasses}>
-              Företag <span className="text-rose-500">*</span>
+              Företag <span className="text-wood-500">*</span>
             </label>
             <input
               id="corp-company"
@@ -95,7 +95,7 @@ export default function CorporateForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="corp-email" className={labelClasses}>
-              E-post <span className="text-rose-500">*</span>
+              E-post <span className="text-wood-500">*</span>
             </label>
             <input
               id="corp-email"
@@ -152,7 +152,7 @@ export default function CorporateForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-wood-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-wood-500 focus:outline-none focus:ring-2 focus:ring-wood-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {isLoading && (
             <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">

@@ -11,9 +11,9 @@ export default function TackPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-lg text-center">
-        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-rose-50">
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-wood-50">
           <svg
-            className="h-10 w-10 text-rose-600"
+            className="h-10 w-10 text-wood-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -28,16 +28,16 @@ export default function TackPage() {
           </svg>
         </div>
 
-        <h1 className="mt-8 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
+        <h1 className="mt-8 text-3xl font-bold tracking-tight text-choc-800 sm:text-4xl">
           Tack för din förfrågan!
         </h1>
-        <p className="mt-4 text-lg leading-8 text-slate-600">
+        <p className="mt-4 text-lg leading-8 text-choc-600">
           Vi har mottagit din bokningsförfrågan och skickat en bekräftelse till
           din e-postadress. Vi återkommer inom kort för att bekräfta din tid.
         </p>
 
-        <div className="mt-8 rounded-2xl bg-stone-50 p-6 text-left text-sm leading-7 text-slate-600 ring-1 ring-stone-100">
-          <p className="font-semibold text-slate-800">Vad händer nu?</p>
+        <div className="mt-8 rounded-2xl bg-sand-50 p-6 text-left text-sm leading-7 text-choc-600 ring-1 ring-sand-100">
+          <p className="font-semibold text-choc-800">Vad händer nu?</p>
           <ol className="mt-3 list-decimal space-y-2 pl-5">
             <li>Vi bekräftar din bokade tid via e-post eller telefon.</li>
             <li>Du får en påminnelse dagen innan din behandling.</li>
@@ -45,19 +45,19 @@ export default function TackPage() {
           </ol>
         </div>
 
-        <div className="mt-8 rounded-2xl bg-rose-50 p-6 text-left text-sm leading-7 text-slate-600 ring-1 ring-rose-100">
-          <p className="font-semibold text-slate-800">Behöver du ändra eller avboka?</p>
+        <div className="mt-8 rounded-2xl bg-wood-50 p-6 text-left text-sm leading-7 text-choc-600 ring-1 ring-wood-100">
+          <p className="font-semibold text-choc-800">Behöver du ändra eller avboka?</p>
           <p className="mt-2">
             Kontakta oss minst 24 timmar innan din behandling:
           </p>
           <div className="mt-3 space-y-1">
             <p>
-              <a href="tel:+46701234567" className="font-medium text-rose-600 hover:text-rose-500">
+              <a href="tel:+46701234567" className="font-medium text-wood-600 hover:text-wood-500">
                 070-123 45 67
               </a>
             </p>
             <p>
-              <a href="mailto:kontakt@wellness.se" className="font-medium text-rose-600 hover:text-rose-500">
+              <a href="mailto:kontakt@wellness.se" className="font-medium text-wood-600 hover:text-wood-500">
                 kontakt@wellness.se
               </a>
             </p>
@@ -67,13 +67,13 @@ export default function TackPage() {
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/"
-            className="rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+            className="rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
           >
             Tillbaka till startsidan
           </Link>
           <Link
             href="/services"
-            className="rounded-full border border-stone-300 bg-white px-8 py-4 text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:bg-stone-50"
+            className="rounded-full border border-sand-300 bg-white px-8 py-4 text-sm font-semibold text-choc-700 shadow-sm transition-colors hover:bg-sand-50"
           >
             Utforska fler behandlingar
           </Link>

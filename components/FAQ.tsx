@@ -40,7 +40,7 @@ const faqs = [
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg
-      className={`h-5 w-5 flex-shrink-0 text-rose-400 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+      className={`h-5 w-5 flex-shrink-0 text-wood-400 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -62,17 +62,17 @@ export default function FAQ() {
     <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-6">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+          <p className="text-sm font-semibold uppercase tracking-widest text-wood-500">
             FAQ
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-choc-800 sm:text-4xl">
             Vanliga frågor
           </h2>
-          <p className="mx-auto mt-4 text-slate-600">
+          <p className="mx-auto mt-4 text-choc-600">
             Hittar du inte svaret du söker?{" "}
             <a
               href="mailto:kontakt@wellness.se"
-              className="text-rose-600 hover:underline"
+              className="text-wood-600 hover:underline"
             >
               Kontakta oss
             </a>
@@ -80,7 +80,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <dl className="mt-12 divide-y divide-stone-100">
+        <dl className="mt-12 divide-y divide-sand-100">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -92,7 +92,7 @@ export default function FAQ() {
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     aria-expanded={isOpen}
                   >
-                    <span className="font-semibold text-slate-800">
+                    <span className="font-semibold text-choc-800">
                       {faq.q}
                     </span>
                     <ChevronIcon open={isOpen} />
@@ -102,7 +102,7 @@ export default function FAQ() {
                   className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
                 >
                   <div className="overflow-hidden">
-                    <p className="pt-3 text-sm leading-7 text-slate-600">
+                    <p className="pt-3 text-sm leading-7 text-choc-600">
                       {faq.a}
                     </p>
                   </div>

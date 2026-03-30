@@ -35,7 +35,7 @@ function SocialIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-stone-300 transition-colors hover:bg-rose-600 hover:text-white"
+      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-sand-300 transition-colors hover:bg-wood-600 hover:text-white"
     >
       {children}
     </a>
@@ -44,14 +44,14 @@ function SocialIcon({
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-stone-300">
+    <footer className="bg-choc-900 text-sand-300">
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
             {/* Logo */}
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-600">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-wood-600">
                 <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
@@ -59,7 +59,7 @@ export default function Footer() {
               <span className="text-lg font-bold tracking-tight text-white">Wellness Studio</span>
             </Link>
 
-            <p className="mt-4 text-sm leading-7 text-stone-400">
+            <p className="mt-4 text-sm leading-7 text-sand-400">
               Professionell massage i hjärtat av Stockholm. Välkommen att
               uppleva verklig avkoppling.
             </p>
@@ -85,7 +85,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-400">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-sand-400">
               Snabblänkar
             </h3>
             <ul className="mt-5 space-y-3">
@@ -101,14 +101,14 @@ export default function Footer() {
 
           {/* Hours */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-400">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-sand-400">
               Öppettider
             </h3>
             <dl className="mt-5 space-y-2.5">
               {hours.map(({ day, time }) => (
                 <div key={day} className="flex justify-between gap-4 text-sm">
                   <dt>{day}</dt>
-                  <dd className="text-stone-400">{time}</dd>
+                  <dd className="text-sand-400">{time}</dd>
                 </div>
               ))}
             </dl>
@@ -116,12 +116,12 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-stone-400">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-sand-400">
               Kontakt
             </h3>
             <ul className="mt-5 space-y-3.5 text-sm">
               <li>
-                <span className="block text-xs text-stone-500">Adress</span>
+                <span className="block text-xs text-sand-500">Adress</span>
                 <span className="mt-0.5 block">Storgatan 12, 111 22 Stockholm</span>
               </li>
               <li>
@@ -137,7 +137,7 @@ export default function Footer() {
             </ul>
             <Link
               href="/booking"
-              className="mt-7 inline-block rounded-full bg-rose-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-500"
+              className="mt-7 inline-block rounded-full bg-wood-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-wood-500"
             >
               Boka tid
             </Link>
@@ -147,7 +147,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 border-t border-white/10 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-xs text-stone-500">
+            <p className="text-xs text-sand-500">
               © {new Date().getFullYear()} Wellness Studio. Alla rättigheter förbehållna.
             </p>
             <div className="flex gap-5">
@@ -155,7 +155,7 @@ export default function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  className="text-xs text-stone-500 transition-colors hover:text-stone-300"
+                  className="text-xs text-sand-500 transition-colors hover:text-sand-300"
                 >
                   {label}
                 </Link>

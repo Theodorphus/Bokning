@@ -27,12 +27,12 @@ export default function GiftCardSection() {
 
             {/* Occasions */}
             <div className="mt-8">
-              <p className="text-sm font-medium text-slate-500">Perfekt till</p>
+              <p className="text-sm font-medium text-choc-700">Perfekt till</p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {occasions.map((o) => (
                   <li
                     key={o.label}
-                    className="flex items-center gap-1.5 rounded-full border border-stone-200 bg-stone-50 px-3.5 py-1.5 text-xs font-medium text-slate-600"
+                    className="flex items-center gap-1.5 rounded-full border border-sand-200 bg-sand-50 px-3.5 py-1.5 text-xs font-medium text-choc-600"
                   >
                     {o.icon} {o.label}
                   </li>
@@ -48,8 +48,8 @@ export default function GiftCardSection() {
                 "Gäller alla behandlingar i studion",
                 "Valfri behandling, belopp eller paket",
               ].map((f) => (
-                <li key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
-                  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-rose-100 text-xs text-rose-600">
+                <li key={f} className="flex items-center gap-2.5 text-sm text-choc-700">
+                  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-wood-100 text-xs text-wood-600">
                     ✓
                   </span>
                   {f}
@@ -60,13 +60,13 @@ export default function GiftCardSection() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/gift-cards"
-                className="rounded-full bg-rose-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+                className="rounded-full bg-wood-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
               >
                 Köp presentkort
               </Link>
               <a
                 href="tel:+46701234567"
-                className="rounded-full border border-stone-300 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-stone-50"
+                className="rounded-full border border-sand-300 bg-white px-7 py-3.5 text-sm font-semibold text-choc-700 transition-colors hover:bg-sand-50"
               >
                 Ring oss
               </a>
@@ -87,7 +87,7 @@ export default function GiftCardSection() {
             {/* Decorative blur */}
             <div
               aria-hidden="true"
-              className="absolute -bottom-6 -left-6 h-40 w-40 rounded-full bg-rose-200/40 blur-3xl"
+              className="absolute -bottom-6 -left-6 h-40 w-40 rounded-full bg-wood-200/40 blur-3xl"
             />
           </div>
         </div>

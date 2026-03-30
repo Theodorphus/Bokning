@@ -32,7 +32,7 @@ export default function StickyCTA() {
     <div className="fixed bottom-0 left-0 right-0 z-40 p-4 lg:hidden">
       <Link
         href="/booking"
-        className="flex w-full items-center justify-center gap-2 rounded-full bg-rose-600 px-6 py-4 text-sm font-semibold text-white shadow-2xl transition-colors hover:bg-rose-500 active:scale-95"
+        className="flex w-full items-center justify-center gap-2 rounded-full bg-wood-600 px-6 py-4 text-sm font-semibold text-white shadow-2xl transition-colors hover:bg-wood-500 active:scale-95"
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

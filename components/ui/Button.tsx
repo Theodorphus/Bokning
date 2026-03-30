@@ -17,12 +17,12 @@ interface ButtonProps {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-rose-600 text-white shadow-md hover:bg-rose-500 focus:ring-rose-400",
+    "bg-wood-600 text-white shadow-md hover:bg-wood-500 focus:ring-wood-400",
   secondary:
-    "bg-white text-slate-700 border border-stone-300 shadow-sm hover:bg-stone-50 focus:ring-stone-300",
+    "bg-white text-choc-700 border border-sand-300 shadow-sm hover:bg-sand-50 focus:ring-sand-300",
   outline:
     "border border-white/40 text-white hover:bg-white/10 focus:ring-white/40",
-  ghost: "text-rose-600 hover:text-rose-500 focus:ring-rose-400",
+  ghost: "text-wood-600 hover:text-wood-500 focus:ring-wood-400",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

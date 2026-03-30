@@ -1,229 +1,192 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import type { Service } from "@/lib/services";
 
-interface BookingFormProps {
+interface Props {
+  slotId: string;
+  slotDate: string;   // display string, e.g. "måndag 14 april 2026"
+  slotTime: string;   // "HH:MM"
   services: Service[];
-  selectedService: string;
+  initialService?: string;
+  onSuccess: (name: string, date: string, time: string, service?: string) => void;
 }
 
-type FormStatus = "idle" | "loading" | "error";
-
-const inputClasses =
-  "w-full rounded-lg px-4 py-3 text-sm text-slate-800 ring-1 ring-stone-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400 transition-shadow bg-white disabled:bg-stone-50 disabled:text-slate-400";
-
-const labelClasses = "block text-sm font-medium text-slate-700 mb-1.5";
+const inputCls =
+  "w-full rounded-lg px-4 py-3 text-sm text-choc-800 ring-1 ring-sand-200 placeholder:text-choc-400 focus:outline-none focus:ring-2 focus:ring-wood-400 transition-shadow bg-white disabled:bg-sand-50 disabled:text-choc-400";
+const labelCls = "block text-sm font-medium text-choc-700 mb-1.5";
 
 export default function BookingForm({
+  slotId,
+  slotDate,
+  slotTime,
   services,
-  selectedService,
-}: BookingFormProps) {
-  const router = useRouter();
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [serviceValue, setServiceValue] = useState(selectedService);
-
-  useEffect(() => {
-    setServiceValue(selectedService);
-  }, [selectedService]);
+  initialService = "",
+  onSuccess,
+}: Props) {
+  const [service, setService] = useState(initialService);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
-    setErrorMessage("");
+    setLoading(true);
+    setError("");
 
     const form = e.currentTarget;
-    const get = (name: string) =>
-      (form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement)
-        ?.value ?? "";
+    const get = (n: string) =>
+      (form.elements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement)?.value ?? "";
 
-    const data = {
+    const payload = {
+      slot_id: slotId,
       name: get("name"),
       email: get("email"),
       phone: get("phone"),
-      service: serviceValue,
-      datetime: get("datetime"),
+      service,
       message: get("message"),
     };
 
     try {
-      const res = await fetch("/api/booking", {
+      const res = await fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
+      const json = await res.json();
 
       if (!res.ok) {
-        const json = await res.json().catch(() => ({}));
-        throw new Error(
-          (json as { message?: string }).message ?? "Något gick fel. Försök igen."
-        );
+        throw new Error(json.message ?? "Något gick fel. Försök igen.");
       }
 
-      router.push("/booking/tack");
+      onSuccess(payload.name, slotDate, slotTime, service || undefined);
     } catch (err) {
-      setStatus("error");
-      setErrorMessage(
-        err instanceof Error ? err.message : "Något gick fel. Försök igen."
-      );
+      setError(err instanceof Error ? err.message : "Något gick fel. Försök igen.");
+      setLoading(false);
     }
   }
 
-  const isLoading = status === "loading";
-
   return (
-    <div className="rounded-2xl bg-white px-6 py-10 shadow-lg ring-1 ring-stone-100 sm:px-10">
-      <h2 className="text-xl font-bold text-slate-800">
-        Skicka bokningsförfrågan
-      </h2>
-      <p className="mt-1 text-sm text-slate-500">
-        Fyll i formuläret så återkommer vi för att bekräfta din tid.
-      </p>
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      {/* Selected time reminder */}
+      <div className="rounded-xl bg-wood-50 px-5 py-3 ring-1 ring-wood-100 text-sm text-choc-700">
+        <span className="font-semibold text-wood-700">Vald tid:</span>{" "}
+        <span className="capitalize">{slotDate}</span> kl. {slotTime}
+      </div>
 
-      <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5">
-        {/* Name + Email row */}
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div>
-            <label htmlFor="name" className={labelClasses}>
-              Namn <span className="text-rose-500">*</span>
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              placeholder="Ditt namn"
-              disabled={isLoading}
-              className={inputClasses}
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className={labelClasses}>
-              E-post <span className="text-rose-500">*</span>
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              placeholder="din@email.com"
-              disabled={isLoading}
-              className={inputClasses}
-            />
-          </div>
-        </div>
-
-        {/* Phone + Datetime row */}
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div>
-            <label htmlFor="phone" className={labelClasses}>
-              Telefon
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder="+46 70 000 00 00"
-              disabled={isLoading}
-              className={inputClasses}
-            />
-          </div>
-          <div>
-            <label htmlFor="datetime" className={labelClasses}>
-              Önskad tid
-            </label>
-            <input
-              id="datetime"
-              name="datetime"
-              type="datetime-local"
-              disabled={isLoading}
-              className={inputClasses}
-            />
-          </div>
-        </div>
-
-        {/* Service select */}
-        {services.length > 0 && (
-          <div>
-            <label htmlFor="service" className={labelClasses}>
-              Behandling
-            </label>
-            <select
-              id="service"
-              name="service"
-              value={serviceValue}
-              onChange={(e) => setServiceValue(e.target.value)}
-              disabled={isLoading}
-              className={inputClasses}
-            >
-              <option value="">Välj behandling...</option>
-              {services.map((s) => (
-                <option key={s.slug} value={s.title}>
-                  {s.title}
-                  {s.serviceFields.price ? ` – ${s.serviceFields.price}` : ""}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-
-        {/* Message */}
+      {/* Service dropdown */}
+      {services.length > 0 && (
         <div>
-          <label htmlFor="message" className={labelClasses}>
-            Meddelande
+          <label className={labelCls}>Behandling</label>
+          <select
+            value={service}
+            onChange={(e) => setService(e.target.value)}
+            disabled={loading}
+            className={inputCls}
+          >
+            <option value="">Välj behandling (valfritt)…</option>
+            {services.map((s) => (
+              <option key={s.slug} value={s.title}>
+                {s.title}
+                {s.serviceFields.price ? ` – ${s.serviceFields.price}` : ""}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {/* Name + Email */}
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="bf-name" className={labelCls}>
+            Namn <span className="text-wood-500">*</span>
           </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            placeholder="Övriga önskemål eller frågor..."
-            disabled={isLoading}
-            className={inputClasses}
+          <input
+            id="bf-name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            placeholder="Ditt namn"
+            disabled={loading}
+            className={inputCls}
           />
         </div>
+        <div>
+          <label htmlFor="bf-email" className={labelCls}>
+            E-post <span className="text-wood-500">*</span>
+          </label>
+          <input
+            id="bf-email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="din@email.com"
+            disabled={loading}
+            className={inputCls}
+          />
+        </div>
+      </div>
 
-        {/* Error */}
-        {status === "error" && (
-          <p
-            role="alert"
-            className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 ring-1 ring-red-200"
-          >
-            {errorMessage}
-          </p>
-        )}
+      {/* Phone */}
+      <div>
+        <label htmlFor="bf-phone" className={labelCls}>
+          Telefon
+        </label>
+        <input
+          id="bf-phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          placeholder="+46 70 000 00 00"
+          disabled={loading}
+          className={`${inputCls} sm:max-w-xs`}
+        />
+      </div>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+      {/* Message */}
+      <div>
+        <label htmlFor="bf-message" className={labelCls}>
+          Meddelande
+        </label>
+        <textarea
+          id="bf-message"
+          name="message"
+          rows={4}
+          placeholder="Övriga önskemål, allergier eller frågor…"
+          disabled={loading}
+          className={inputCls}
+        />
+      </div>
+
+      {/* Error */}
+      {error && (
+        <p
+          role="alert"
+          className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 ring-1 ring-red-200"
         >
-          {isLoading && (
-            <svg
-              className="h-4 w-4 animate-spin"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v8H4z"
-              />
+          {error}
+        </p>
+      )}
+
+      {/* Submit */}
+      <button
+        type="submit"
+        disabled={loading}
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-wood-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-wood-500 focus:outline-none focus:ring-2 focus:ring-wood-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+      >
+        {loading ? (
+          <>
+            <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
-          )}
-          {isLoading ? "Skickar..." : "Skicka förfrågan"}
-        </button>
-      </form>
-    </div>
+            Skickar…
+          </>
+        ) : (
+          "Bekräfta bokning"
+        )}
+      </button>
+    </form>
   );
 }

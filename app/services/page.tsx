@@ -22,7 +22,7 @@ const slugToLocalImage: Record<string, string> = {
   djupvavnadsmassage: "/images/djupvavnad.png",
   sportmassage: "/images/sport.png",
   gravidmassage: "/images/gravid.png",
-  "hot-stone-massage": "/images/studio.png",
+  "hot-stone-massage": "/images/studio2.png",
   triggerpoint: "/images/triggerpoint.png",
 };
 
@@ -31,7 +31,7 @@ const fallbackServices = [
   { slug: "#", title: "Djupvävnadsmassage", shortDescription: "Intensivare massage som arbetar djupare i musklerna för att lösa upp kroniska spänningar och smärta.", price: "från 795 kr", image: "/images/djupvavnad.png" },
   { slug: "#", title: "Sportmassage", shortDescription: "Anpassad för aktiva och idrottare. Förbättrar återhämtning, rörlighet och förebygger skador.", price: "från 795 kr", image: "/images/sport.png" },
   { slug: "#", title: "Gravidmassage", shortDescription: "Skonsam massage anpassad för gravida. Minskar ryggvärk, svullnad och ger välbehövlig avkoppling.", price: "från 795 kr", image: "/images/gravid.png" },
-  { slug: "#", title: "Hot stone massage", shortDescription: "Varma vulkanstenar kombineras med klassisk massage för djup avkoppling och ökad cirkulation.", price: "från 895 kr", image: "/images/studio.png" },
+  { slug: "#", title: "Hot stone massage", shortDescription: "Varma vulkanstenar kombineras med klassisk massage för djup avkoppling och ökad cirkulation.", price: "från 895 kr", image: "/images/studio2.png" },
   { slug: "#", title: "Trigger point-terapi", shortDescription: "Riktad behandling av ömma punkter i musklerna. Effektiv mot kronisk smärta och spänningshuvudvärk.", price: "från 895 kr", image: "/images/triggerpoint.png" },
 ];
 
@@ -42,30 +42,30 @@ export default async function ServicesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-choc-900 py-20 sm:py-28">
         <Image
-          src="/images/bakgrund1.png"
+          src="/images/hero.png"
           alt="Massage behandlingar hos Wellness Studio"
           fill
           className="object-cover opacity-35"
           priority
           sizes="100vw"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900/80" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-choc-900/65 to-choc-900/88" />
         <div className="relative mx-auto max-w-5xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
+          <p className="text-sm font-semibold uppercase tracking-widest text-wood-300">
             Behandlingar
           </p>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Välj din behandling
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200">
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-choc-200">
             Vi erbjuder ett brett utbud av professionella massagebehandlingar –
             alla skräddarsydda efter dina behov.
           </p>
           <Link
             href="/booking"
-            className="mt-10 inline-block rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+            className="mt-10 inline-block rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
           >
             Boka direkt
           </Link>
@@ -81,15 +81,25 @@ export default async function ServicesPage() {
             body="Osäker på vilken behandling som passar? Kontakta oss så hjälper vi dig välja rätt."
           />
 
+          {/* Intro text */}
+          <div className="mt-8 mx-auto max-w-2xl text-center">
+            <p className="text-choc-700 leading-7">
+              Varje kropp är unik. Hos oss börjar varje besök med en kort
+              genomgång av dina behov och önskemål – så att behandlingen blir
+              precis rätt för just dig, oavsett om du söker djup avkoppling,
+              smärtlindring eller ökad rörlighet.
+            </p>
+          </div>
+
           <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {useWordPress
               ? services.map((service) => (
                   <li key={service.slug}>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 transition-shadow hover:shadow-lg"
+                      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-100 transition-shadow hover:shadow-lg"
                     >
-                      <div className="relative aspect-video overflow-hidden bg-stone-100">
+                      <div className="relative aspect-video overflow-hidden bg-sand-100">
                         <Image
                           src={
                             service.serviceFields.image?.sourceUrl ||
@@ -102,23 +112,23 @@ export default async function ServicesPage() {
                         />
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <h2 className="font-semibold text-slate-800 group-hover:text-rose-600 transition-colors">
+                        <h2 className="font-semibold text-choc-900 group-hover:text-wood-600 transition-colors">
                           {service.title}
                         </h2>
                         {service.serviceFields.shortDescription && (
-                          <p className="mt-2 flex-1 text-sm leading-7 text-slate-600 line-clamp-3">
+                          <p className="mt-2 flex-1 text-sm leading-7 text-choc-700 line-clamp-3">
                             {service.serviceFields.shortDescription}
                           </p>
                         )}
-                        <div className="mt-5 flex items-center justify-between border-t border-stone-100 pt-4">
+                        <div className="mt-5 flex items-center justify-between border-t border-sand-100 pt-4">
                           {service.serviceFields.price ? (
-                            <span className="text-sm font-semibold text-rose-600">
+                            <span className="text-sm font-semibold text-wood-600">
                               {service.serviceFields.price}
                             </span>
                           ) : (
                             <span />
                           )}
-                          <span className="rounded-full bg-rose-50 px-3 py-1 text-xs font-medium text-rose-600 group-hover:bg-rose-100 transition-colors">
+                          <span className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-600 group-hover:bg-wood-100 transition-colors">
                             Läs mer →
                           </span>
                         </div>
@@ -128,8 +138,8 @@ export default async function ServicesPage() {
                 ))
               : fallbackServices.map((service) => (
                   <li key={service.title}>
-                    <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100">
-                      <div className="relative aspect-video overflow-hidden bg-stone-100">
+                    <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-100">
+                      <div className="relative aspect-video overflow-hidden bg-sand-100">
                         <Image
                           src={service.image}
                           alt={service.title}
@@ -139,15 +149,15 @@ export default async function ServicesPage() {
                         />
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <h2 className="font-semibold text-slate-800">{service.title}</h2>
-                        <p className="mt-2 flex-1 text-sm leading-7 text-slate-600">
+                        <h2 className="font-semibold text-choc-900">{service.title}</h2>
+                        <p className="mt-2 flex-1 text-sm leading-7 text-choc-700">
                           {service.shortDescription}
                         </p>
-                        <div className="mt-5 flex items-center justify-between border-t border-stone-100 pt-4">
-                          <span className="text-sm font-semibold text-rose-600">{service.price}</span>
+                        <div className="mt-5 flex items-center justify-between border-t border-sand-100 pt-4">
+                          <span className="text-sm font-semibold text-wood-600">{service.price}</span>
                           <Link
                             href="/booking"
-                            className="rounded-full bg-rose-50 px-3 py-1 text-xs font-medium text-rose-600 hover:bg-rose-100 transition-colors"
+                            className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-600 hover:bg-wood-100 transition-colors"
                           >
                             Boka →
                           </Link>
@@ -160,23 +170,91 @@ export default async function ServicesPage() {
         </div>
       </section>
 
+      {/* Rekommenderad behandling */}
+      <section className="bg-sand-50 py-20 sm:py-24">
+        <div className="mx-auto max-w-5xl px-6">
+          <SectionHeader
+            eyebrow="Osäker på vad du behöver?"
+            title="Välj efter ditt mål"
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                goal: "Jag vill slappna av",
+                description: "Perfekt efter en stressig period. Lugna rörelser, mjukt tryck och fullständig ro.",
+                treatments: ["Avslappningsmassage", "Hot stone massage"],
+                image: "/images/avslappning.png",
+                href: "/services/avslappningsmassage",
+              },
+              {
+                goal: "Jag har ont i kroppen",
+                description: "Arbetar djupare i musklerna för att lösa kroniska spänningar, ryggvärk och stelhet.",
+                treatments: ["Djupvävnadsmassage", "Trigger point-terapi"],
+                image: "/images/djupvavnad.png",
+                href: "/services/djupvavnadsmassage",
+              },
+              {
+                goal: "Jag är aktiv / idrottare",
+                description: "Optimerar återhämtning, förebygger skador och ökar rörligheten inför eller efter träning.",
+                treatments: ["Sportmassage", "Djupvävnadsmassage"],
+                image: "/images/sport.png",
+                href: "/services/sportmassage",
+              },
+            ].map((r) => (
+              <Link
+                key={r.goal}
+                href={r.href}
+                className="group flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-sand-100 shadow-sm transition-shadow hover:shadow-lg"
+              >
+                <div className="relative aspect-video overflow-hidden">
+                  <Image
+                    src={r.image}
+                    alt={r.goal}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-choc-900/60 to-transparent" />
+                  <p className="absolute bottom-3 left-4 text-sm font-bold text-white">
+                    {r.goal}
+                  </p>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="text-sm leading-6 text-choc-700">{r.description}</p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {r.treatments.map((t) => (
+                      <li key={t} className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-700">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-5 inline-block self-start rounded-full bg-wood-600 px-5 py-2 text-xs font-semibold text-white transition-colors group-hover:bg-wood-500">
+                    Läs mer →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="bg-stone-50 py-16">
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-xl px-6 text-center">
-          <h2 className="text-2xl font-bold text-slate-800">Redo att boka?</h2>
-          <p className="mt-3 text-slate-600">
+          <h2 className="text-2xl font-bold text-choc-900">Redo att boka?</h2>
+          <p className="mt-3 text-choc-700">
             Välj behandling och skicka din förfrågan – vi återkommer med en bekräftelse.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/booking"
-              className="rounded-full bg-rose-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-rose-500"
+              className="rounded-full bg-wood-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-wood-500"
             >
               Boka din tid
             </Link>
             <Link
               href="/about"
-              className="rounded-full border border-stone-300 bg-white px-8 py-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-stone-50"
+              className="rounded-full border border-sand-300 bg-white px-8 py-4 text-sm font-semibold text-choc-700 transition-colors hover:bg-sand-50"
             >
               Om terapeuten
             </Link>

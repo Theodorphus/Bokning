@@ -21,7 +21,7 @@ const features = [
 
 export default function StudioSection() {
   return (
-    <section className="bg-stone-50 py-20 sm:py-28">
+    <section className="bg-sand-50 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
           eyebrow="Vår studio"
@@ -44,7 +44,7 @@ export default function StudioSection() {
           />
           {/* Overlay text */}
           <div className="absolute bottom-0 left-0 p-8">
-            <p className="text-sm font-semibold uppercase tracking-widest text-rose-300">
+            <p className="text-sm font-semibold uppercase tracking-widest text-wood-300">
               Storgatan 12, Stockholm
             </p>
             <p className="mt-1 text-lg font-bold text-white">
@@ -58,12 +58,12 @@ export default function StudioSection() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="flex items-start gap-4 rounded-2xl bg-white p-6 ring-1 ring-stone-100"
+              className="flex items-start gap-4 rounded-2xl bg-white p-6 ring-1 ring-sand-100"
             >
               <span className="flex-shrink-0 text-2xl">{f.icon}</span>
               <div>
-                <h3 className="font-semibold text-slate-800">{f.title}</h3>
-                <p className="mt-1 text-sm leading-6 text-slate-600">{f.text}</p>
+                <h3 className="font-semibold text-choc-800">{f.title}</h3>
+                <p className="mt-1 text-sm leading-6 text-choc-600">{f.text}</p>
               </div>
             </div>
           ))}
