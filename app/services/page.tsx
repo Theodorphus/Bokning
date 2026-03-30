@@ -93,7 +93,7 @@ export default async function ServicesPage() {
                         <Image
                           src={
                             service.serviceFields.image?.sourceUrl ||
-                            slugToLocalImage[service.slug] ?? "/images/bakgrund2.png"
+                            (slugToLocalImage[service.slug] ?? "/images/bakgrund2.png")
                           }
                           alt={service.title}
                           fill
