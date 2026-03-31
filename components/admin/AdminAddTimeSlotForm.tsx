@@ -17,7 +17,7 @@ export default function AdminAddTimeSlotForm() {
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <div className="rounded-xl bg-white p-6 ring-1 ring-sand-200">
+    <div className="rounded-xl bg-white p-6 ring-1 ring-choc-200 border border-choc-200">
       <form ref={formRef} action={formAction} className="space-y-4">
         {/* Date + Time */}
         <div className="grid gap-4 sm:grid-cols-2">
@@ -31,7 +31,7 @@ export default function AdminAddTimeSlotForm() {
               type="date"
               required
               min={today}
-              className="w-full rounded-lg px-3 py-2.5 text-sm text-choc-800 ring-1 ring-sand-200 focus:outline-none focus:ring-2 focus:ring-wood-400 bg-white"
+              className="w-full rounded-lg px-3 py-2.5 text-sm text-choc-800 ring-1 ring-choc-200 focus:outline-none focus:ring-2 focus:ring-wood-400 bg-white"
             />
           </div>
           <div>
@@ -43,7 +43,7 @@ export default function AdminAddTimeSlotForm() {
               name="start_time"
               type="time"
               required
-              className="w-full rounded-lg px-3 py-2.5 text-sm text-choc-800 ring-1 ring-sand-200 focus:outline-none focus:ring-2 focus:ring-wood-400 bg-white"
+              className="w-full rounded-lg px-3 py-2.5 text-sm text-choc-800 ring-1 ring-choc-200 focus:outline-none focus:ring-2 focus:ring-wood-400 bg-white"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function AdminAddTimeSlotForm() {
               id="slot-duration"
               name="duration_minutes"
               defaultValue="60"
-              className="w-full rounded-lg px-3 py-2.5 text-sm text-choc-800 ring-1 ring-sand-200 focus:outline-none focus:ring-2 focus:ring-wood-400 bg-white"
+              className="w-full rounded-lg px-3 py-2.5 text-sm text-choc-800 ring-1 ring-choc-200 focus:outline-none focus:ring-2 focus:ring-wood-400 bg-white"
             >
               <option value="30">30 min</option>
               <option value="45">45 min</option>

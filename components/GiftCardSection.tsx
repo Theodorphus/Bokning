@@ -32,7 +32,7 @@ export default function GiftCardSection() {
                 {occasions.map((o) => (
                   <li
                     key={o.label}
-                    className="flex items-center gap-1.5 rounded-full border border-sand-200 bg-sand-50 px-3.5 py-1.5 text-xs font-medium text-choc-600"
+                    className="flex items-center gap-1.5 rounded-full border border-choc-200 bg-choc-50 px-3.5 py-1.5 text-xs font-medium text-choc-700"
                   >
                     {o.icon} {o.label}
                   </li>

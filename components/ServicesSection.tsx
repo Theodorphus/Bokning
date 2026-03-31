@@ -88,7 +88,7 @@ export default function ServicesSection() {
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-semibold text-choc-900 transition-colors group-hover:text-wood-600">
+                  <h3 className="font-semibold text-choc-800 transition-colors group-hover:text-wood-600">
                     {service.title}
                   </h3>
                   <p className="mt-2 flex-1 text-sm leading-7 text-choc-700 line-clamp-3">

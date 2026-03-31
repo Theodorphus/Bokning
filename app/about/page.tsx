@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import TherapistIntro from "@/components/TherapistIntro";
-import Testimonials from "@/components/Testimonials";
 import OpeningHours from "@/components/OpeningHours";
+import { getPageContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Om oss",
@@ -36,13 +36,15 @@ const values = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const content = await getPageContent("about");
+
   return (
     <div>
       {/* Hero with image */}
       <section className="relative overflow-hidden bg-choc-900 py-24 sm:py-32">
         <Image
-          src="/images/avslappning.png"
+          src={content.image_url || "/images/avslappning.png"}
           alt="Wellness Studio – avslappnande massage i stämningsfull miljö"
           fill
           className="object-cover opacity-35"
@@ -56,11 +58,10 @@ export default function AboutPage() {
             Om oss
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Välkommen till Wellness Studio
+            {content.title || "Välkommen till Wellness Studio"}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-choc-200">
-            Vi tror på kraften i beröring – att en timmes professionell massage
-            kan förändra hur du mår, både i kropp och sinne.
+            {content.subtitle || "Vi tror på kraften i beröring – att en timmes professionell massage kan förändra hur du mår, både i kropp och sinne."}
           </p>
           <Link
             href="/booking"
@@ -220,7 +221,6 @@ export default function AboutPage() {
       </section>
 
       <TherapistIntro />
-      <Testimonials />
       <OpeningHours />
 
       {/* CTA */}

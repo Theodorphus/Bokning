@@ -2,7 +2,18 @@
 
 @layer base {
   body {
-    color: #2A1F18;
+    color: #1F1E1D;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #1A1817;
+    font-weight: 600;
+  }
+
+  p {
+    max-width: 680px;
   }
 }
 
@@ -22,22 +33,22 @@
   --color-wood-900: #3D2B1F;
 
   /* Choc – ersätter slate (mörk text / hero-bakgrunder) */
-  --color-choc-50:  #F8F5F2;
-  --color-choc-100: #EDE5DC;
-  --color-choc-200: #D6C9BE;
-  --color-choc-300: #BCAB9D;
+  --color-choc-50:  #F2EEEB;
+  --color-choc-100: #EDE7E3;
+  --color-choc-200: #E5DED8;
+  --color-choc-300: #D4BEA0;
   --color-choc-400: #A08C7C;
   --color-choc-500: #856D5E;
   --color-choc-600: #6E5847;
-  --color-choc-700: #574436;
-  --color-choc-800: #4A3828;
-  --color-choc-900: #3E2F25;
+  --color-choc-700: #1F1E1D;
+  --color-choc-800: #1A1817;
+  --color-choc-900: #1A1817;
 
   /* Sand – ersätter stone (neutrala bg / borders) */
-  --color-sand-50:  #FDFCF9;
-  --color-sand-100: #F7F4EF;
-  --color-sand-200: #EEE7D8;
-  --color-sand-300: #E2D5C0;
+  --color-sand-50:  #F2EEEB;
+  --color-sand-100: #EDE7E3;
+  --color-sand-200: #E5DED8;
+  --color-sand-300: #D4BEA0;
   --color-sand-400: #D4BEA0;
   --color-sand-500: #C0A884;
 

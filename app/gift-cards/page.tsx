@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { getGlobalOptions } from "@/lib/global-options";
+import { getPageContent } from "@/lib/content";
+
+export const revalidate = 60; // ISR: revalidate var 60:e sekund
 
 export const metadata: Metadata = {
   title: "Presentkort",
@@ -12,7 +17,7 @@ export const metadata: Metadata = {
     title: "Presentkort – Wellness Studio",
     description:
       "Ge bort en upplevelse. Presentkort på massage – ett perfekt val till alla tillfällen.",
-    images: [{ url: "/images/presentkort.png", width: 1200, height: 630 }],
+    images: [{ url: "/images/8.PRESENKORT2.png", width: 1200, height: 630 }],
   },
 };
 
@@ -59,13 +64,23 @@ const occasions = [
   { label: "Tack-present", icon: "🙏" },
 ];
 
-export default function GiftCardsPage() {
+export default async function GiftCardsPage() {
+  // Hämta globala inställningar och kontrollera om presentkortssidan är aktiverad
+  const [globalOptions, content] = await Promise.all([
+    getGlobalOptions(),
+    getPageContent("gift_cards"),
+  ]);
+
+  if (!globalOptions.showGiftCards) {
+    notFound();
+  }
+
   return (
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden bg-choc-900 py-24 sm:py-32">
         <Image
-          src="/images/presentkort.png"
+          src={content.image_url || "/images/8.PRESENKORT2.png"}
           alt="Presentkort på massage – ge bort välmående"
           fill
           className="object-cover opacity-35"
@@ -79,12 +94,10 @@ export default function GiftCardsPage() {
             Presentkort
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Ge bort välmående
+            {content.title || "Ge bort välmående"}
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-choc-200">
-            Ett presentkort på massage är mer än en present – det är en stund av
-            ro, återhämtning och omsorg. Perfekt till födelsedag, jul, mors dag
-            eller bara för att visa att du bryr dig.
+            {content.body || "Ett presentkort på massage är mer än en present – det är en stund av ro, återhämtning och omsorg. Perfekt till födelsedag, jul, mors dag eller bara för att visa att du bryr dig."}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a

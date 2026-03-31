@@ -6,10 +6,10 @@ import CorporateMassageSection from "@/components/CorporateMassageSection";
 import GiftCardSection from "@/components/GiftCardSection";
 import StudioSection from "@/components/StudioSection";
 import AboutMeSection from "@/components/AboutMeSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import InstagramSection from "@/components/InstagramSection";
 import HowItWorks from "@/components/HowItWorks";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { getPageContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Professionell massage i Stockholm",
@@ -92,7 +92,9 @@ const usps = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const homepageContent = await getPageContent("homepage");
+
   return (
     <>
       <script
@@ -102,7 +104,11 @@ export default function HomePage() {
 
       <div>
         {/* 1. Hero */}
-        <HeroSection />
+        <HeroSection
+          title={homepageContent.hero_title}
+          subtitle={homepageContent.hero_subtitle}
+          image={homepageContent.hero_image}
+        />
 
         {/* 2. USP */}
         <section className="bg-white py-20 sm:py-28">
@@ -134,10 +140,7 @@ export default function HomePage() {
         {/* 6. About therapist */}
         <AboutMeSection />
 
-        {/* 7. Testimonials */}
-        <TestimonialsSection />
-
-        {/* 8. Corporate */}
+        {/* 7. Corporate */}
         <CorporateMassageSection />
 
         {/* 9. Gift cards */}

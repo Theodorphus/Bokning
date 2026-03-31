@@ -58,12 +58,12 @@ export default function StudioSection() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="flex items-start gap-4 rounded-2xl bg-white p-6 ring-1 ring-sand-100"
+              className="flex items-start gap-4 rounded-2xl bg-white p-6 border border-choc-200"
             >
               <span className="flex-shrink-0 text-2xl">{f.icon}</span>
               <div>
                 <h3 className="font-semibold text-choc-800">{f.title}</h3>
-                <p className="mt-1 text-sm leading-6 text-choc-600">{f.text}</p>
+                <p className="mt-1 text-sm leading-6 text-choc-700">{f.text}</p>
               </div>
             </div>
           ))}

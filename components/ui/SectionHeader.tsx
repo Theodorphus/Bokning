@@ -19,12 +19,12 @@ export default function SectionHeader({
         </p>
       )}
       <h2
-        className={`${eyebrow ? "mt-3" : ""} text-3xl font-bold tracking-tight text-choc-900 sm:text-4xl`}
+        className={`${eyebrow ? "mt-3" : ""} text-3xl font-bold tracking-tight text-choc-800 sm:text-4xl`}
       >
         {title}
       </h2>
       {body && (
-        <p className={`mt-4 text-choc-700 ${center ? "mx-auto max-w-2xl" : ""}`}>
+        <p className={`mt-4 text-choc-700 leading-7 ${center ? "mx-auto max-w-2xl" : ""}`}>
           {body}
         </p>
       )}

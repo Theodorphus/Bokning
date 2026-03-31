@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeroBooking from "@/components/HeroBooking";
 import BookingClient from "@/components/BookingClient";
-import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import PaymentOptions from "@/components/PaymentOptions";
 import CancellationPolicy from "@/components/CancellationPolicy";
@@ -161,7 +160,6 @@ export default async function BookingPage() {
           </div>
         </section>
 
-        <Testimonials limit={3} />
         <PaymentOptions />
         <CancellationPolicy />
         <FAQ />

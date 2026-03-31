@@ -4,24 +4,36 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const links = [
+interface NavProps {
+  showGiftCards?: boolean;
+}
+
+const allLinks = [
   { href: "/", label: "Hem" },
   { href: "/services", label: "Tjänster" },
   { href: "/about", label: "Om oss" },
-  { href: "/gift-cards", label: "Presentkort" },
+  { href: "/gift-cards", label: "Presentkort", featureFlag: "showGiftCards" },
   { href: "/corporate-massage", label: "Företag" },
 ];
 
-export default function Nav() {
+export default function Nav({ showGiftCards = true }: NavProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  // Filtrera links baserat på feature flags
+  const links = allLinks.filter((link) => {
+    if (link.featureFlag === "showGiftCards" && !showGiftCards) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <header className="sticky top-0 z-50 border-b border-choc-200 bg-white/95 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-choc-900"
+          className="text-lg font-bold tracking-tight text-choc-800"
         >
           Wellness Studio
         </Link>
@@ -33,7 +45,7 @@ export default function Nav() {
               <Link
                 href={href}
                 className={`text-sm font-medium transition-colors hover:text-wood-600 ${
-                  pathname === href ? "text-wood-600" : "text-choc-600"
+                  pathname === href ? "text-wood-600" : "text-choc-700"
                 }`}
               >
                 {label}

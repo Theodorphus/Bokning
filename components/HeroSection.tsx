@@ -1,11 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  title?: string;
+  subtitle?: string;
+  image?: string;
+}
+
+export default function HeroSection({
+  title = "Hitta din balans. Känn skillnaden.",
+  subtitle = "Professionell massage i hjärtat av Stockholm. Varje behandling skräddarsys efter just dina behov – oavsett om du söker avkoppling eller smärtlindring.",
+  image = "/images/hero.png",
+}: HeroSectionProps = {}) {
   return (
     <section className="relative overflow-hidden bg-choc-900 py-24 sm:py-36 lg:py-44">
       <Image
-        src="/images/hero.png"
+        src={image}
         alt="Avkopplande massage hos Wellness Studio i Stockholm"
         fill
         className="object-cover opacity-50"
@@ -22,14 +32,12 @@ export default function HeroSection() {
           Välkommen till Wellness Studio
         </p>
         <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Hitta din balans.<br className="hidden sm:block" /> Känn skillnaden.
+          {title}
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-choc-200">
-          Professionell massage i hjärtat av Stockholm. Varje behandling
-          skräddarsys efter just dina behov – oavsett om du söker avkoppling
-          eller smärtlindring.
+        <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-white">
+          {subtitle}
         </p>
-        <p className="mt-4 text-sm text-choc-400">
+        <p className="mx-auto mt-4 text-sm text-white/80">
           Ingen bindningstid &nbsp;·&nbsp; Bekräftelse direkt via e-post &nbsp;·&nbsp; Avboka kostnadsfritt upp till 24h
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

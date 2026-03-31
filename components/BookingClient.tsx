@@ -126,7 +126,7 @@ export default function BookingClient({ services }: Props) {
     <div className="space-y-10">
       {/* Loading / error state */}
       {loadingSlots && (
-        <div className="flex items-center gap-3 rounded-xl bg-sand-50 px-5 py-4 text-sm text-choc-600 ring-1 ring-sand-200">
+        <div className="flex items-center gap-3 rounded-xl bg-choc-50 px-5 py-4 text-sm text-choc-700 ring-1 ring-choc-200 border border-choc-200">
           <svg className="h-4 w-4 animate-spin text-wood-500" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
@@ -159,7 +159,7 @@ export default function BookingClient({ services }: Props) {
                       ? "bg-wood-600 text-white"
                       : isDone
                       ? "bg-wood-50 text-wood-600"
-                      : "text-choc-400",
+                      : "text-choc-500",
                   ].join(" ")}
                 >
                   <span className="hidden sm:inline">{i + 1}. </span>

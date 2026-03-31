@@ -34,10 +34,10 @@ export default function ServiceCard({
       role="button"
       tabIndex={0}
     >
-      {service.serviceFields.image?.sourceUrl && (
+      {service.image_url && (
         <div className="relative aspect-video overflow-hidden bg-sand-100">
           <Image
-            src={service.serviceFields.image.sourceUrl}
+            src={service.image_url}
             alt={service.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -49,15 +49,15 @@ export default function ServiceCard({
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-semibold text-choc-800">{service.title}</h3>
 
-        {service.serviceFields.shortDescription && (
-          <p className="mt-2 flex-1 text-sm leading-6 text-choc-600 line-clamp-3">
-            {service.serviceFields.shortDescription}
+        {service.short_description && (
+          <p className="mt-2 flex-1 text-sm leading-6 text-choc-700 line-clamp-3">
+            {service.short_description}
           </p>
         )}
 
-        {service.serviceFields.price && (
+        {service.price && (
           <p className="mt-3 text-sm font-semibold text-wood-600">
-            {service.serviceFields.price}
+            {service.price}
           </p>
         )}
 

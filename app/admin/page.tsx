@@ -3,7 +3,16 @@ import AdminBookingsList from "@/components/admin/AdminBookingsList";
 import AdminAddTimeSlotForm from "@/components/admin/AdminAddTimeSlotForm";
 import AdminTimeSlotList from "@/components/admin/AdminTimeSlotList";
 import AdminExportButton from "@/components/admin/AdminExportButton";
+import AdminSettingsPanel from "@/components/admin/AdminSettingsPanel";
+import AdminHomepageForm from "@/components/admin/AdminHomepageForm";
+import AdminServicesPanel from "@/components/admin/AdminServicesPanel";
+import AdminAboutForm from "@/components/admin/AdminAboutForm";
+import AdminCorporateForm from "@/components/admin/AdminCorporateForm";
+import AdminGiftCardsForm from "@/components/admin/AdminGiftCardsForm";
 import { logoutAction } from "@/app/admin/actions";
+import { getGlobalOptions } from "@/lib/global-options";
+import { getPageContent } from "@/lib/content";
+import { getAllServices } from "@/lib/services";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +20,22 @@ export default async function AdminPage() {
   const db = getSupabaseAdmin();
   const today = new Date().toISOString().split("T")[0];
 
-  const [{ data: bookings }, { data: slots }] = await Promise.all([
+  const [
+    globalOptions,
+    homepageContent,
+    aboutContent,
+    corporateContent,
+    giftCardsContent,
+    allServices,
+    { data: bookings },
+    { data: slots },
+  ] = await Promise.all([
+    getGlobalOptions(),
+    getPageContent("homepage"),
+    getPageContent("about"),
+    getPageContent("corporate"),
+    getPageContent("gift_cards"),
+    getAllServices(),
     db
       .from("bookings")
       .select("id, date, start_time, service, name, email, phone, message, status, created_at")
@@ -63,6 +87,11 @@ export default async function AdminPage() {
       </header>
 
       <main className="mx-auto max-w-6xl space-y-10 px-6 py-10">
+        {/* ── Settings ────────────────────────────────────────────────── */}
+        <section>
+          <AdminSettingsPanel showGiftCards={globalOptions.showGiftCards} showCorporateMassage={globalOptions.showCorporateMassage} />
+        </section>
+
         {/* ── Stats ──────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {[
@@ -80,6 +109,31 @@ export default async function AdminPage() {
             </div>
           ))}
         </div>
+
+        {/* ── CMS: Homepage ──────────────────────────────────────────────── */}
+        <section>
+          <AdminHomepageForm content={homepageContent} />
+        </section>
+
+        {/* ── CMS: Services ──────────────────────────────────────────────── */}
+        <section>
+          <AdminServicesPanel services={allServices} />
+        </section>
+
+        {/* ── CMS: About ─────────────────────────────────────────────────── */}
+        <section>
+          <AdminAboutForm content={aboutContent} />
+        </section>
+
+        {/* ── CMS: Corporate Massage ─────────────────────────────────────── */}
+        <section>
+          <AdminCorporateForm content={corporateContent} />
+        </section>
+
+        {/* ── CMS: Gift Cards ────────────────────────────────────────────── */}
+        <section>
+          <AdminGiftCardsForm content={giftCardsContent} />
+        </section>
 
         {/* ── Bookings list ───────────────────────────────────────────── */}
         <section>

@@ -13,8 +13,8 @@ interface Props {
 }
 
 const inputCls =
-  "w-full rounded-lg px-4 py-3 text-sm text-choc-800 ring-1 ring-sand-200 placeholder:text-choc-400 focus:outline-none focus:ring-2 focus:ring-wood-400 transition-shadow bg-white disabled:bg-sand-50 disabled:text-choc-400";
-const labelCls = "block text-sm font-medium text-choc-700 mb-1.5";
+  "w-full rounded-lg px-4 py-3 text-sm text-choc-800 ring-1 ring-choc-200 placeholder:text-choc-500 focus:outline-none focus:ring-2 focus:ring-wood-400 transition-shadow bg-white disabled:bg-choc-50 disabled:text-choc-500";
+const labelCls = "block text-sm font-medium text-choc-800 mb-1.5";
 
 export default function BookingForm({
   slotId,
@@ -87,7 +87,7 @@ export default function BookingForm({
             {services.map((s) => (
               <option key={s.slug} value={s.title}>
                 {s.title}
-                {s.serviceFields.price ? ` – ${s.serviceFields.price}` : ""}
+                {s.price ? ` – ${s.price}` : ""}
               </option>
             ))}
           </select>

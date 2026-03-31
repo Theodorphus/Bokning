@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import CorporateForm from "@/components/CorporateForm";
 import HowItWorks from "@/components/HowItWorks";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { getPageContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Företagsmassage",
@@ -84,7 +85,9 @@ const serviceSchema = {
   areaServed: "Stockholm",
 };
 
-export default function CorporateMassagePage() {
+export default async function CorporateMassagePage() {
+  const content = await getPageContent("corporate");
+
   return (
     <>
       <script
@@ -96,7 +99,7 @@ export default function CorporateMassagePage() {
         {/* Hero with image */}
         <section className="relative overflow-hidden bg-choc-900 py-24 sm:py-36">
           <Image
-            src="/images/foretag.png"
+            src={content.image_url || "/images/foretag.png"}
             alt="Företagsmassage – välmående på arbetsplatsen"
             fill
             className="object-cover opacity-30"
@@ -110,11 +113,10 @@ export default function CorporateMassagePage() {
               Företagsmassage
             </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Investera i ditt teams välmående
+              {content.title || "Investera i ditt teams välmående"}
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-choc-200">
-              Professionell massage för din personalgrupp – på plats hos er eller
-              i vår studio. Minskar stress, ökar fokus och stärker teamkänslan.
+              {content.body || "Professionell massage för din personalgrupp – på plats hos er eller i vår studio. Minskar stress, ökar fokus och stärker teamkänslan."}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a

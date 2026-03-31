@@ -63,7 +63,7 @@ export default function AboutMeSection() {
 
           {/* Bio */}
           <div>
-            <h3 className="text-xl font-bold text-choc-900">
+            <h3 className="text-xl font-bold text-choc-800">
               Anna Lindgren, Massageterapeut
             </h3>
             <p className="mt-4 leading-8 text-choc-700">
@@ -81,7 +81,7 @@ export default function AboutMeSection() {
 
             {/* Certifications */}
             <div className="mt-8">
-              <h4 className="font-semibold text-choc-900">
+              <h4 className="font-semibold text-choc-800">
                 Utbildning &amp; certifikat
               </h4>
               <ul className="mt-3 space-y-2">
@@ -99,7 +99,7 @@ export default function AboutMeSection() {
 
             {/* Specializations */}
             <div className="mt-8">
-              <h4 className="font-semibold text-choc-900">Specialiseringar</h4>
+              <h4 className="font-semibold text-choc-800">Specialiseringar</h4>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {specializations.map((s) => (
                   <li

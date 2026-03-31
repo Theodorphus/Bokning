@@ -159,7 +159,7 @@ export default function Calendar({ slotsByDate, selectedDate, onSelectDate }: Pr
           onClick={prevMonth}
           disabled={isCurrentMonth}
           aria-label="Föregående månad"
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-sand-200 bg-sand-50 text-choc-600 transition-colors hover:bg-sand-100 disabled:pointer-events-none disabled:opacity-30"
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-choc-200 bg-choc-50 text-choc-700 transition-colors hover:bg-choc-100 disabled:pointer-events-none disabled:opacity-30"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />

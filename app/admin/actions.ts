@@ -4,6 +4,9 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { getSupabaseAdmin } from "@/lib/supabase-server";
+import { updateGlobalOption } from "@/lib/global-options";
+import { updatePageContent } from "@/lib/content";
+import type { PageName } from "@/lib/cms-types";
 
 // ── Auth ─────────────────────────────────────────────────────────────────
 
@@ -84,4 +87,62 @@ export async function deleteTimeSlot(id: string) {
 
   if (error) throw new Error(error.message);
   revalidatePath("/admin");
+}
+
+// ── Global Settings ───────────────────────────────────────────────────────
+
+export async function updateGlobalSettings(
+  _prevState: { error?: string; success?: boolean } | null,
+  formData: FormData
+) {
+  try {
+    const showGiftCards = formData.get("show_gift_cards") === "on";
+    const showCorporateMassage = formData.get("show_corporate_massage") === "on";
+
+    await updateGlobalOption("show_gift_cards", showGiftCards);
+    await updateGlobalOption("show_corporate_massage", showCorporateMassage);
+
+    revalidatePath("/admin");
+    revalidatePath("/");
+    revalidatePath("/gift-cards");
+    revalidatePath("/corporate-massage");
+
+    return { success: true, error: undefined };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "Något gick fel";
+    return { success: false, error: errorMessage };
+  }
+}
+
+// ── CMS: Page Content ───────────────────────────────────────────────────────
+
+export async function savePageContent(
+  _prevState: { success?: boolean; error?: string } | null,
+  formData: FormData
+) {
+  try {
+    const page = formData.get("page") as PageName;
+    if (!page) {
+      return { success: false, error: "Sidan måste anges" };
+    }
+
+    // Extract all form fields except 'page'
+    const fields: Record<string, string> = {};
+    for (const [key, value] of formData.entries()) {
+      if (key !== "page" && typeof value === "string") {
+        fields[key] = value;
+      }
+    }
+
+    await updatePageContent(page, fields);
+
+    revalidatePath("/admin");
+    revalidatePath("/");
+    revalidatePath(`/${page === "gift_cards" ? "gift-cards" : page}`);
+
+    return { success: true, error: undefined };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "Något gick fel";
+    return { success: false, error: errorMessage };
+  }
 }

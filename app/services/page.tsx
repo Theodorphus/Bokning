@@ -26,18 +26,8 @@ const slugToLocalImage: Record<string, string> = {
   triggerpoint: "/images/triggerpoint.png",
 };
 
-const fallbackServices = [
-  { slug: "#", title: "Avslappningsmassage", shortDescription: "Helkroppsmassage med mjuka, lugna rörelser som löser upp spänningar och sänker stressnivån. Perfekt för återhämtning.", price: "från 695 kr", image: "/images/avslappning.png" },
-  { slug: "#", title: "Djupvävnadsmassage", shortDescription: "Intensivare massage som arbetar djupare i musklerna för att lösa upp kroniska spänningar och smärta.", price: "från 795 kr", image: "/images/djupvavnad.png" },
-  { slug: "#", title: "Sportmassage", shortDescription: "Anpassad för aktiva och idrottare. Förbättrar återhämtning, rörlighet och förebygger skador.", price: "från 795 kr", image: "/images/sport.png" },
-  { slug: "#", title: "Gravidmassage", shortDescription: "Skonsam massage anpassad för gravida. Minskar ryggvärk, svullnad och ger välbehövlig avkoppling.", price: "från 795 kr", image: "/images/gravid.png" },
-  { slug: "#", title: "Hot stone massage", shortDescription: "Varma vulkanstenar kombineras med klassisk massage för djup avkoppling och ökad cirkulation.", price: "från 895 kr", image: "/images/studio2.png" },
-  { slug: "#", title: "Trigger point-terapi", shortDescription: "Riktad behandling av ömma punkter i musklerna. Effektiv mot kronisk smärta och spänningshuvudvärk.", price: "från 895 kr", image: "/images/triggerpoint.png" },
-];
-
 export default async function ServicesPage() {
   const services = await getAllServices();
-  const useWordPress = services.length > 0;
 
   return (
     <div>
@@ -92,80 +82,49 @@ export default async function ServicesPage() {
           </div>
 
           <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {useWordPress
-              ? services.map((service) => (
-                  <li key={service.slug}>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-100 transition-shadow hover:shadow-lg"
-                    >
-                      <div className="relative aspect-video overflow-hidden bg-sand-100">
-                        <Image
-                          src={
-                            service.serviceFields.image?.sourceUrl ||
-                            (slugToLocalImage[service.slug] ?? "/images/bakgrund2.png")
-                          }
-                          alt={service.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      </div>
-                      <div className="flex flex-1 flex-col p-6">
-                        <h2 className="font-semibold text-choc-900 group-hover:text-wood-600 transition-colors">
-                          {service.title}
-                        </h2>
-                        {service.serviceFields.shortDescription && (
-                          <p className="mt-2 flex-1 text-sm leading-7 text-choc-700 line-clamp-3">
-                            {service.serviceFields.shortDescription}
-                          </p>
-                        )}
-                        <div className="mt-5 flex items-center justify-between border-t border-sand-100 pt-4">
-                          {service.serviceFields.price ? (
-                            <span className="text-sm font-semibold text-wood-600">
-                              {service.serviceFields.price}
-                            </span>
-                          ) : (
-                            <span />
-                          )}
-                          <span className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-600 group-hover:bg-wood-100 transition-colors">
-                            Läs mer →
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </li>
-                ))
-              : fallbackServices.map((service) => (
-                  <li key={service.title}>
-                    <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-100">
-                      <div className="relative aspect-video overflow-hidden bg-sand-100">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      </div>
-                      <div className="flex flex-1 flex-col p-6">
-                        <h2 className="font-semibold text-choc-900">{service.title}</h2>
-                        <p className="mt-2 flex-1 text-sm leading-7 text-choc-700">
-                          {service.shortDescription}
-                        </p>
-                        <div className="mt-5 flex items-center justify-between border-t border-sand-100 pt-4">
-                          <span className="text-sm font-semibold text-wood-600">{service.price}</span>
-                          <Link
-                            href="/booking"
-                            className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-600 hover:bg-wood-100 transition-colors"
-                          >
-                            Boka →
-                          </Link>
-                        </div>
-                      </div>
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-100 transition-shadow hover:shadow-lg"
+                >
+                  <div className="relative aspect-video overflow-hidden bg-sand-100">
+                    <Image
+                      src={
+                        service.image_url ||
+                        (slugToLocalImage[service.slug] ?? "/images/bakgrund2.png")
+                      }
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h2 className="font-semibold text-choc-900 group-hover:text-wood-600 transition-colors">
+                      {service.title}
+                    </h2>
+                    {service.short_description && (
+                      <p className="mt-2 flex-1 text-sm leading-7 text-choc-700 line-clamp-3">
+                        {service.short_description}
+                      </p>
+                    )}
+                    <div className="mt-5 flex items-center justify-between border-t border-sand-100 pt-4">
+                      {service.price ? (
+                        <span className="text-sm font-semibold text-wood-600">
+                          {service.price}
+                        </span>
+                      ) : (
+                        <span />
+                      )}
+                      <span className="rounded-full bg-wood-50 px-3 py-1 text-xs font-medium text-wood-600 group-hover:bg-wood-100 transition-colors">
+                        Läs mer →
+                      </span>
                     </div>
-                  </li>
-                ))}
+                  </div>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </section>

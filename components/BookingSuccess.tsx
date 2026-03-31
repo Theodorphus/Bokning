@@ -21,32 +21,32 @@ export default function BookingSuccess({ name, date, time, service, onReset }: P
       <h2 className="mt-6 text-2xl font-bold text-choc-800">
         Tack, {name}!
       </h2>
-      <p className="mt-2 text-choc-600">
+      <p className="mt-2 text-choc-700">
         Din bokningsförfrågan är skickad. Vi återkommer med en bekräftelse via e-post.
       </p>
 
       {/* Booking summary */}
-      <div className="mt-8 w-full max-w-sm rounded-2xl bg-sand-50 p-6 ring-1 ring-sand-200 text-left space-y-3">
+      <div className="mt-8 w-full max-w-sm rounded-2xl bg-choc-50 p-6 ring-1 ring-choc-200 text-left space-y-3 border border-choc-200">
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-500">
           Din bokning
         </p>
         {service && (
           <div className="flex justify-between text-sm">
-            <span className="text-choc-500">Behandling</span>
+            <span className="text-choc-700">Behandling</span>
             <span className="font-medium text-choc-800">{service}</span>
           </div>
         )}
         <div className="flex justify-between text-sm">
-          <span className="text-choc-500">Datum</span>
+          <span className="text-choc-700">Datum</span>
           <span className="font-medium text-choc-800 capitalize">{date}</span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-choc-500">Tid</span>
+          <span className="text-choc-700">Tid</span>
           <span className="font-medium text-choc-800">kl. {time}</span>
         </div>
       </div>
 
-      <p className="mt-6 max-w-xs text-xs text-choc-500">
+      <p className="mt-6 max-w-xs text-xs text-choc-700">
         Avbokning är kostnadsfri upp till 24 timmar innan behandlingen.
         Kontakta oss på{" "}
         <a href="mailto:kontakt@wellness.se" className="text-wood-600 underline underline-offset-2">

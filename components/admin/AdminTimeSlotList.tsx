@@ -32,8 +32,8 @@ export default function AdminTimeSlotList({ slots }: Props) {
 
   if (optimistic.length === 0) {
     return (
-      <div className="rounded-xl bg-white p-6 text-center ring-1 ring-sand-200">
-        <p className="text-sm text-choc-500">Inga kommande tidsluckor.</p>
+      <div className="rounded-xl bg-white p-6 text-center ring-1 ring-choc-200 border border-choc-200">
+        <p className="text-sm text-choc-700">Inga kommande tidsluckor.</p>
       </div>
     );
   }
@@ -67,7 +67,7 @@ export default function AdminTimeSlotList({ slots }: Props) {
                   <span className="text-sm font-semibold text-choc-900">
                     {slot.start_time.slice(0, 5)}
                   </span>
-                  <span className="text-xs text-choc-500">{slot.duration_minutes} min</span>
+                  <span className="text-xs text-choc-700">{slot.duration_minutes} min</span>
                   {slot.service_id && (
                     <span className="rounded-full bg-wood-50 px-2 py-0.5 text-xs text-wood-700">
                       {slot.service_id}

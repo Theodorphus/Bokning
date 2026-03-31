@@ -3,7 +3,10 @@ import { Geist } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
+import { getGlobalOptions } from "@/lib/global-options";
 import "./globals.css";
+
+export const revalidate = 60; // ISR: revalidate var 60:e sekund
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,15 +28,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Hämta globala inställningar för feature flags
+  const globalOptions = await getGlobalOptions();
+
   return (
     <html lang="sv" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-choc-50 text-choc-900">
-        <Nav />
+      <body className="flex min-h-full flex-col bg-choc-50 text-choc-700">
+        <Nav showGiftCards={globalOptions.showGiftCards} />
         <main className="flex-1">{children}</main>
         <Footer />
         <StickyCTA />

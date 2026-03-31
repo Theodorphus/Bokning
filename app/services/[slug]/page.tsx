@@ -19,19 +19,19 @@ export async function generateMetadata({
   if (!service) return {};
 
   const ogImage =
-    service.serviceFields.image?.sourceUrl ||
+    service.image_url ||
     `https://picsum.photos/seed/${slug}/1200/630`;
 
   return {
     title: service.title,
     description:
-      service.serviceFields.shortDescription ??
+      service.short_description ??
       `Boka ${service.title} hos Wellness Studio i Stockholm.`,
     alternates: { canonical: `https://wellness-studio.se/services/${slug}` },
     openGraph: {
       title: `${service.title} – Wellness Studio`,
       description:
-        service.serviceFields.shortDescription ??
+        service.short_description ??
         `Boka ${service.title} hos Wellness Studio i Stockholm.`,
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
@@ -48,30 +48,30 @@ export default async function ServicePage({
 
   if (!service) notFound();
 
-  const { title, serviceFields } = service;
+  const { title, short_description, price, image_url } = service;
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: title,
-    description: serviceFields.shortDescription ?? undefined,
+    description: short_description ?? undefined,
     provider: {
       "@type": "LocalBusiness",
       name: "Wellness Studio",
       url: "https://wellness-studio.se",
     },
     areaServed: "Stockholm",
-    offers: serviceFields.price
+    offers: price
       ? {
           "@type": "Offer",
-          price: serviceFields.price,
+          price: price,
           priceCurrency: "SEK",
         }
       : undefined,
   };
 
   const imageUrl =
-    serviceFields.image?.sourceUrl ||
+    image_url ||
     `https://picsum.photos/seed/${slug}/1200/600`;
 
   return (
@@ -119,15 +119,15 @@ export default async function ServicePage({
                 {title}
               </h1>
 
-              {serviceFields.price && (
+              {price && (
                 <p className="mt-3 text-2xl font-bold text-wood-600">
-                  {serviceFields.price}
+                  {price}
                 </p>
               )}
 
-              {serviceFields.shortDescription && (
+              {short_description && (
                 <p className="mt-6 text-lg leading-8 text-choc-600">
-                  {serviceFields.shortDescription}
+                  {short_description}
                 </p>
               )}
 
@@ -157,9 +157,9 @@ export default async function ServicePage({
             <div className="lg:col-span-1">
               <div className="sticky top-24 rounded-2xl bg-wood-50 p-7 ring-1 ring-wood-100">
                 <h2 className="font-semibold text-choc-800">Boka {title}</h2>
-                {serviceFields.price && (
+                {price && (
                   <p className="mt-1 text-sm text-choc-500">
-                    Pris: <span className="font-semibold text-wood-600">{serviceFields.price}</span>
+                    Pris: <span className="font-semibold text-wood-600">{price}</span>
                   </p>
                 )}
                 <p className="mt-4 text-sm leading-7 text-choc-600">

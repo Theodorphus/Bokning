@@ -92,7 +92,7 @@ export default function HowItWorks({ variant = "default" }: HowItWorksProps) {
                 </span>
               </div>
               <h3 className="mt-5 font-semibold text-choc-800">{s.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-choc-600">{s.text}</p>
+              <p className="mt-2 text-sm leading-7 text-choc-700">{s.text}</p>
             </div>
           ))}
         </div>

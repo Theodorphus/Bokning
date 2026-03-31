@@ -50,8 +50,8 @@ export default function AdminBookingsList({ bookings }: Props) {
 
   if (optimistic.length === 0) {
     return (
-      <div className="rounded-xl bg-white p-10 text-center ring-1 ring-sand-200">
-        <p className="text-sm text-choc-500">Inga bokningar ännu.</p>
+      <div className="rounded-xl bg-white p-10 text-center ring-1 ring-choc-200 border border-choc-200">
+        <p className="text-sm text-choc-700">Inga bokningar ännu.</p>
       </div>
     );
   }
@@ -94,7 +94,7 @@ export default function AdminBookingsList({ bookings }: Props) {
                     {b.start_time?.slice(0, 5)}
                   </td>
                   <td className="px-4 py-3 font-medium text-choc-900">{b.name}</td>
-                  <td className="hidden px-4 py-3 text-choc-600 sm:table-cell">
+                  <td className="hidden px-4 py-3 text-choc-700 sm:table-cell">
                     <a href={`mailto:${b.email}`} className="hover:text-wood-600 hover:underline">
                       {b.email}
                     </a>
